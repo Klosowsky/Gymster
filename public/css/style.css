@@ -1,0 +1,272 @@
+body{
+    margin:0;
+}
+
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background: #505A63;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: column;
+    height: 45%;
+}
+
+.logo-icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    height:60%;
+}
+
+.logo-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+img.icon{
+    width: 45%;
+    height: auto;
+}
+
+form.login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 35vh;
+    background: #FFFFFF;
+    border: 1px solid #707070;
+    border-radius: 35px;
+    width: 70%
+
+}
+
+form.register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+    background: #FFFFFF;
+    border: 1px solid #707070;
+    border-radius: 35px;
+    width: 70%
+
+}
+.checkbox-inline{
+    display: flex;
+    flex-direction: row;
+
+}
+.check-label{
+    margin:1.5em;
+}
+
+button {
+    background: #505A63;
+    border-radius: 6px;
+    width:30%;
+    border: 1px solid #707070;
+    margin: 1.5em;
+    line-height: 3em;
+    color: #FFFFFF;
+
+}
+
+input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.5px solid #707070;
+    padding:1em;
+    margin:1.5em;
+    width:50%;
+}
+
+label{
+    color: #3D4750;
+    padding:0em;
+    margin:0em;
+
+}
+
+.register-base-container{
+    width: 100vw;
+    height: 100vh;
+    background: #505A63;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+@media only screen and (max-device-width: 420px) {
+
+    .register-base-container{
+        flex-direction: column;
+    }
+
+    .logo-container{
+        height: 35%;
+    }
+
+    .login-container{
+        width: 100%;
+        margin: 1em;
+    }
+
+    .register-container{
+        width: 100%;
+        margin: 1em;
+    }
+
+    form.login {
+        height: 45vh;
+    }
+
+    form.register{
+        width:90%;
+    }
+
+
+    input {
+        padding:1em;
+        margin:1em;
+        width:70%;
+    }
+
+    button{
+        width: 50%;
+        margin:1em;
+    }
+
+    label{
+        margin:0em;
+    
+    }
+    
+    * {
+        font-size: 36px;
+    }
+}
+
+@media only screen and (min-device-width: 421px) and (max-device-width: 1000px) {
+
+    .register-base-container{
+        flex-direction: column;
+    }
+
+    .logo-container{
+        height: 35%;
+    }
+
+    .login-container{
+        width: 80%;
+        margin: 1em;
+    }
+
+    .register-container{
+        width: 80%;
+        margin: 1em;
+    }
+
+    form.login {
+        height: 40vh;
+    }
+    
+    form.register{
+        width:80%;
+    }
+
+    input {
+        padding:1em;
+        margin:1em;
+        width:70%;
+    }
+
+    button{
+        width: 50%;
+        margin:1em;
+    }
+
+    label{
+        margin:0em;
+    
+    }
+    
+    * {
+        font-size: 25px;
+    }
+    
+}
+
+@media only screen and (max-device-height: 800px) and (min-device-width: 800px ) {
+
+    form.register{
+        height:90vh;
+    }
+
+    .container{
+        flex-direction: row;
+    }
+
+    .logo-container{
+        width: 50%;
+        align-items:  center;
+    }
+
+    .logo-container.img{
+        width: 50%;
+    }
+
+    img.icon{
+        width: 85%;
+        height: auto;
+    }
+
+    .login-container{
+        width: 50%;
+    }
+
+    .register-container{
+        width: 50%;
+    }
+
+    form.login {
+        height: 55vh;
+    }
+
+    button{
+        width: 60%;
+        margin:1em;
+    }
+
+    label{
+        margin:0em;
+    
+    }
+
+}
