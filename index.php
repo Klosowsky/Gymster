@@ -9,6 +9,6 @@ Routing::post('login','LoginController');
 Routing::get('register','DefaultController');
 Routing::get('projects','DefaultController');
 
-Routing::run($path)
+Routing::run($path);
 
 ?>
