@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
 <title>Register page</title>
 
 
@@ -9,10 +9,10 @@
     <div class="register-base-container">
         <div class="logo-container">
             <div class="logo-icon">
-                <img src="../img/logo_icon.svg" class="icon">
+                <img src="public/img/logo_icon.svg" class="icon">
             </div>
             <div class="logo-text">
-                <img src="../img/logo.svg">
+                <img src="public/img/logo.svg">
             </div>
         </div>
         <div class="register-container">
