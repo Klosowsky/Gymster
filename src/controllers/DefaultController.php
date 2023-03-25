@@ -17,9 +17,9 @@ class DefaultController extends AppController
         $this->render('register');
     }
 
-    public function projects()
+    public function trainings()
     {
-        die("projects page");
+        $this->render('trainings');
     }
 
 }

@@ -1,0 +1,75 @@
+section.trainings-sec{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    color:white;
+}
+
+.training-item{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+    height:auto;
+    border-bottom: 1px solid gray;
+}
+
+.training-item-fav{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:8vw;
+}
+
+.training-item-title{
+    display:flex;
+    width:18vw;
+    align-items: center;
+    font-size:2em;
+    font-weight: bold;
+}
+
+.training-item-descr{
+    display:flex;
+    align-items: center;
+    overflow-wrap: break-word;
+    width:33vw;
+    font-size:1.3em;
+    padding: 5px 5px;
+}
+
+.training-item-rate{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:8vw;
+    flex-direction: column;
+}
+
+.likes{
+    background: green;
+}
+
+.dislikes{
+    background: darkred;
+}
+
+.training-user-photo{
+    width:6vw;
+    height: 6vw;
+    border-radius: 50%;
+    margin: 1vw 1vw;
+    overflow: hidden;
+    border: 1px solid gray;
+
+}
+
+
+
+.training-username{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:13vw;
+    font-size:1.2em
+}

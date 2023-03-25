@@ -7,7 +7,7 @@ $path= parse_url(trim($_SERVER['REQUEST_URI'],'/'), PHP_URL_PATH);
 Routing::get('','DefaultController');
 Routing::post('login','LoginController');
 Routing::get('register','DefaultController');
-Routing::get('projects','DefaultController');
+Routing::get('trainings','DefaultController');
 
 Routing::run($path);
 

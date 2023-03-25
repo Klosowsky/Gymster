@@ -128,6 +128,183 @@ label{
 }
 
 
+
+
+.trainings-header{
+    display: flex;
+    height: 10vh;
+    background: #3D4750;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header-logo{
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-user-details{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    right:1%;
+}
+
+.user-photo{
+    height: 9vh;
+    width: auto;
+
+    border-radius: 50%;
+    border: 1px solid gray;
+    overflow: hidden;
+}
+
+.user-username{
+    margin-right: 15px;
+    color:white;
+}
+
+img.user-profile-img{
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+}
+
+img.header-logo-img{
+    transform: scale(80%);
+
+}
+
+.main-container{
+    background: #505A63;
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-tool-bar{
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    height: 15vh;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.search-training-bar{
+    display: flex;
+    width:75%;
+    height: 100%;
+    align-items: center;
+
+
+}
+
+input.search-training-input{
+    background-color: #3D4750;
+    border: 1px solid gray;
+    margin-left: 0;
+    width:100%;
+    height: 45%;
+    color:white;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-radius: 13px;
+    font-size:25px;
+    padding-left: 30px;
+}
+
+
+.add-training-btn{
+    display: flex;
+    width:25%;
+    height: 100%;
+    align-items: center;
+}
+
+input.add-training-button{
+    padding:  0 0;
+    background: #3D4750;
+    border-radius: 13px;
+    border: 1px solid gray;
+    width:100%;
+    height:45%;
+    margin-right: 0;
+    color: gray;
+    font-size:25px;
+    color:white;
+}
+
+
+.trainings-menu-container{
+    background: #3D4750;
+    border-radius: 15px 15px 0px 0px;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    width: 90vw;
+    height:6.5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.menu-trainings-button{
+    background: #505A63;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    margin:  0 0;
+    padding: 0 0;
+    width:33.6%;
+    color: white;
+    font-size:25px;
+}
+
+.trainings-main-container{
+    background: #3D4750;
+    border-radius: 0px 0px 15px 15px ;
+    width: 90vw;
+    height:65vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 30px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 @media only screen and (max-device-width: 420px) {
 
     .register-base-container{
