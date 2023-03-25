@@ -19,7 +19,7 @@ class LoginController extends AppController
             return $this->render('login',['errorLogin'=>'Incorrect login or password!']);
         }
         else{
-            return $this->render('projects');
+            return $this->render('trainings');
         }
 
 
