@@ -8,6 +8,7 @@ Routing::get('','DefaultController');
 Routing::post('login','LoginController');
 Routing::get('register','DefaultController');
 Routing::get('trainings','DefaultController');
+Routing::get('trainingdetails','DefaultController');
 
 Routing::run($path);
 
