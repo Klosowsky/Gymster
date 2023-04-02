@@ -22,4 +22,8 @@ class DefaultController extends AppController
         $this->render('trainings');
     }
 
+    public function trainingDetails(){
+        $this->render('trainingdetails');
+    }
+
 }

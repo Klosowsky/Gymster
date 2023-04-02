@@ -3,6 +3,9 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/trainings.css">
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>Gymster</title>
 
     <script type="text/javascript">
@@ -24,30 +27,22 @@
 
 
     </script>
+    <script src="https://kit.fontawesome.com/ab1fdc6776.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="trainings-header">
-    <div class="header-logo">
-        <img class="header-logo-img" src="public/img/logo.svg">
-    </div>
 
-
-    <div class="header-user-details">
-        <div class="user-username"> ExampleUser123
-        </div>
-       <div class="user-photo">
-           <img class="user-profile-img" src="public/uploads/Will_Smith.jpg">
-       </div>
-    </div>
-</div>
+<?php include 'public/views/header.php';?>
 
 <div class="main-container">
     <div class="main-tool-bar">
         <div class="search-training-bar">
             <input class="search-training-input" type="text" placeholder="Search...">
+            <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
         </div>
         <div class="add-training-btn">
-            <input class="add-training-button" type="button" value="Add workout">
+            <i class="fa-solid fa-plus fa-2xl"></i>
+            <p class="p-add-workout">Add workout</p>
+            <!--<input class="add-training-button" type="button" value="Add workout"<i class="fa-solid fa-plus"></i>-->
         </div>
     </div>
 
@@ -59,9 +54,11 @@
     <div class="trainings-main-container">
         <section class="trainings-sec">
             <?php for($i = 0; $i < 10; $i += 1): ?>
+            <a href="/trainingdetails">
             <div class="training-item">
                 <div class="training-item-fav">
-                    fav
+                    <i class="fa-regular fa-star fa-2xl"></i>
+                    <i class="fa-solid fa-star fa-2xl"></i>
                 </div>
                 <div class="training-item-title">
                     FBW training
@@ -74,19 +71,21 @@
                 </div>
                 <div class="training-item-rate">
                     <div class="likes">
-                        like
+                        <i class="fa-solid fa-thumbs-up fa-2xl"></i>
+                        <p>1234</p>
                     </div>
                     <div class="dislikes">
-                        dislike
+                        <i class="fa-solid fa-thumbs-down fa-2xl"></i> <p>321</p>
                     </div>
                 </div>
                 <div class="training-user-photo">
                     <img class="user-profile-img" src="public/uploads/Will_Smith.jpg">
                 </div>
-                <div class="training-username"> ExampleUser123 <br>Advanced
+                <div class="training-username"> <p>ExampleUser123</p>
+                    <p class="p-exp">Advanced</p>
                 </div>
 
-            </div>
+            </div></a>
         <?php endfor; ?>
         </section>
     </div>

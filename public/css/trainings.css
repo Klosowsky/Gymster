@@ -33,7 +33,7 @@ section.trainings-sec{
     display:flex;
     align-items: center;
     overflow-wrap: break-word;
-    width:33vw;
+    width:36vw;
     font-size:1.3em;
     padding: 5px 5px;
 }
@@ -41,17 +41,27 @@ section.trainings-sec{
 .training-item-rate{
     display:flex;
     justify-content: center;
-    align-items: center;
-    width:8vw;
+    width:5vw;
     flex-direction: column;
+
 }
 
 .likes{
-    background: green;
+    color: green;
+    font-weight: bold;
+}
+.likes>p{
+    display: inline;
+}
+.dislikes>p{
+    display: inline;
+
 }
 
 .dislikes{
-    background: darkred;
+    padding-top: 2em;
+    color: #be0000 ;
+    font-weight: bold;
 }
 
 .training-user-photo{
@@ -68,8 +78,239 @@ section.trainings-sec{
 
 .training-username{
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width:13vw;
     font-size:1.2em
+}
+
+.training-username>p{
+    margin:0 0 0 0;
+}
+
+.training-username>p.p-exp{
+    color:grey;
+}
+
+
+.training-details-container{
+    background: #505A63;
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    color:white;
+}
+
+
+.training-general-info-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 23%;
+}
+
+.training-general-info{
+    display: flex;
+    width: 90%;
+    height: 70%;
+    border: 1px solid gray;
+    border-radius: 20px;
+    background: #3D4750;
+}
+
+.training-days-container{
+    display: inline-grid;
+    grid-auto-flow: column;
+    height: 77%;
+    grid-gap: 5vw;
+    background: #505A63;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    align-items: center;
+    overflow-x:scroll;
+
+}
+
+
+
+.training-day-box{
+    display: flex;
+    flex-direction: column;
+    background: #3D4750;
+    height:450px;
+    width: 250px;
+    border: 1px solid gray;
+    border-radius: 20px;
+
+}
+
+.training-general-info>.training-item-descr{
+    display: block;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow-y: scroll;
+}
+
+
+.training-box-day-number{
+    height: 12%;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6em;
+    font-weight: bold;
+
+}
+
+.training-box-exercise-list{
+    overflow-y: scroll;
+}
+
+.training-box-exercise{
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top:20px;
+    font-size:1.3em;
+}
+
+.training-box-exercise>.p-exercise-name{
+    font-weight: bold;
+    margin-block-end: 0;
+    margin-block-start: 0;
+}
+
+.training-box-exercise>.p-exercise-details{
+    color: gray;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+/* Track */
+.training-day-box::-webkit-scrollbar-track {
+    background: white;
+    /*    margin-top: 3px;
+        margin-bottom: 10px;*/
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+/* width */
+.training-days-container::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+.training-days-container::-webkit-scrollbar-track {
+    background: transparent;
+/*    margin-top: 3px;
+    margin-bottom: 10px;*/
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+/* Handle */
+.training-days-container::-webkit-scrollbar-thumb {
+    background: #3D4750;
+    border-radius: 30px;
+}
+
+/* Handle on hover */
+.training-days-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media only screen and (max-device-width: 820px) {
+
+    .training-item{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        width:100%;
+        height:auto;
+        border-bottom: 1px solid gray;
+        flex-wrap: wrap;
+        margin: 1em 0;
+
+    }
+
+
+    .training-item-fav{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.5vh;
+        width:30%;
+        order:0;
+    }
+
+
+    .training-item-title{
+        display:flex;
+        width:70%;
+        align-items: center;
+        font-size:2em;
+        font-weight: bold;
+        margin-top: 1.5vh;
+        order:1;
+    }
+
+    .training-item-descr{
+        display:flex;
+        align-items: center;
+
+        overflow-wrap: break-word;
+        width:100%;
+        font-size:1.3em;
+        padding: 2em 2em;
+        order:2;
+    }
+
+    .training-item-rate{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width:27%;
+        flex-direction: column;
+        margin: 0 0;
+        order:3;
+    }
+
+
+
+    .training-user-photo{
+        width:27%;
+        height: auto;
+        border-radius: 50%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 2em;
+        overflow: hidden;
+        border: 1px solid gray;
+        order:4;
+
+    }
+
+    .training-username{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width:45%;
+        font-size:1.2em;
+        order:5;
+        margin: 0 0;
+    }
+
+
+
+
+
+
 }
