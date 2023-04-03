@@ -40,9 +40,10 @@
                     <i class="fa-solid fa-thumbs-down fa-2xl"></i> <p>321</p>
                 </div>
             </div>
-
-            <div class="training-user-photo">
-                <img class="user-profile-img" src="public/uploads/Will_Smith.jpg">
+            <div class="training-photo-position">
+                <div class="training-user-photo">
+                    <img class="user-profile-img" src="public/uploads/Will_Smith.jpg">
+                </div>
             </div>
             <div class="training-username"> <p>ExampleUser123</p>
                 <p class="p-exp">Advanced</p>
