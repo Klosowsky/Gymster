@@ -246,6 +246,7 @@ section.trainings-sec{
         border-bottom: 1px solid gray;
         flex-wrap: wrap;
         margin: 1em 0;
+        padding-bottom: 2em
 
     }
 
@@ -313,7 +314,7 @@ section.trainings-sec{
         display:flex;
         justify-content: center;
         align-items: center;
-        width:37vw;
+        width:36vw;
         order:5;
         margin: 0 0;
     }

@@ -39,11 +39,15 @@
             <input class="search-training-input" type="text" placeholder="Search...">
             <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
         </div>
-        <div class="add-training-btn">
-            <i class="fa-solid fa-plus fa-2xl"></i>
-            <p class="p-add-workout">Add workout</p>
-            <!--<input class="add-training-button" type="button" value="Add workout"<i class="fa-solid fa-plus"></i>-->
+
+        <div class="add-training-btn" onclick="location.href='/addtraining';" style="cursor: pointer;">
+            <!--<a class="a-add-btn" href="/addtraining">-->
+                <i class="fa-solid fa-plus fa-2xl"></i>
+                <p class="p-add-workout">Add workout</p>
+                <!--<input class="add-training-button" type="button" value="Add workout"<i class="fa-solid fa-plus"></i>-->
+            <!--</a>-->
         </div>
+
     </div>
 
     <div class="trainings-menu-container">
@@ -78,8 +82,10 @@
                         <i class="fa-solid fa-thumbs-down fa-2xl"></i> <p>321</p>
                     </div>
                 </div>
-                <div class="training-user-photo">
-                    <img class="user-profile-img" src="public/uploads/Will_Smith.jpg">
+                <div class="training-photo-position">
+                    <div class="training-user-photo">
+                        <img class="user-profile-img" src="public/uploads/Will_Smith.jpg">
+                    </div>
                 </div>
                 <div class="training-username"> <p>ExampleUser123</p>
                     <p class="p-exp">Advanced</p>
