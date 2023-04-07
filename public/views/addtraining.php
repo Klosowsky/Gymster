@@ -16,7 +16,17 @@
 <?php include 'public/views/header.php';?>
 
 <div class="training-details-container">
+    <div class="add-training-general-info-container">
+        <div class="add-training-title-box">
+            <div class="add-training-title-header">
+                <p>Title</p>
+            </div>
+            <div class="add-training-title-content">
+                <textarea maxlength="50" class="new-training-title" placeholder="Your title..."></textarea>
+            </div>
+        </div>
 
+    </div>
 
 
 
