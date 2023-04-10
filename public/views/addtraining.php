@@ -13,15 +13,30 @@
 
     <script type="text/javascript" src="src/js/jquery.js"></script>
     <script type="text/javascript">
-        function add_row()
-        {
-            $rowno=1;
+        var trainingDayCounter=1;
+        var exerciseForDayCounter = [];
+        exerciseForDayCounter[1]=0;
 
-            $("#add-ex-1-1").after('<div class="add-excercise-details" id="add-ex-1-2"> <input type="text" placeholder="exercise nie2"> </div>');
+        function add_exercise(trainingDayId)
+        {
+            var trainingDayBtnId="#add-exe-btn-d"+trainingDayId;
+            exerciseForDayCounter[trainingDayId]++;
+            let newExerciseId="add-ex-"+trainingDayId+"-"+exerciseForDayCounter[trainingDayId];
+            $(trainingDayBtnId).before('<div class="add-excercise-details" id="'+newExerciseId+'"> <input type="text" placeholder="'+newExerciseId+'"> </div>');
+
         }
-        function delete_row(rowno)
+        function delete_exercise(rowno)
         {
             $('#'+rowno).remove();
+        }
+
+        function add_trainingday()
+        {
+            trainingDayCounter++;
+            exerciseForDayCounter[trainingDayCounter]=0;
+            const localTrainingDayId=trainingDayCounter;
+            var trainingDayBtnId="#add-exe-btn-d"+trainingDayCounter;
+            $("#add-tng-day-btn").before('<div class="training-day-box" id="add-day-'+trainingDayCounter+'"> <div class="training-box-day-number"> <p>Day '+trainingDayCounter+'</p> </div> <div class="training-box-exercise-list" id="trn-day-'+trainingDayCounter+'"> <input id="add-exe-btn-d'+trainingDayCounter+'" type="button" onclick="add_exercise('+trainingDayCounter+')" placeholder="add exercise"> </div> </div>');
         }
     </script>
 
@@ -62,23 +77,43 @@
         </div>
 
     </div>
-
-    <div class="training-days-container">
-        <form action="/add-training" method="post">
+    <form action="/add-training" method="post" class="add-training-form">
+    <div class="training-add-days-container">
             <div class="training-day-box" id="add-day-1">
                 <div class="training-box-day-number">
                     <p>Day 1</p>
                 </div>
-                <div class="training-box-exercise-list">
-                    <div class="add-excercise-details" id="add-ex-1-1">
-                        <input type="text" placeholder="exercise nie">
+                <div class="training-box-exercise-list" id="trn-day-1">
+                    <div class="add-exercise-details" id="add-ex-1-1">
+                        <div class="my-inline-pos">
+                            <select class="select-add-exercise" id="sel-exc-1-1" name="exc" >
+                                <option value="" selected disabled hidden>Choose exercise</option>
+                                <option value="bench_press">Bench press</option>
+                                <option value="deadlift">Deadlift</option>
+                            </select>
+                            <i class="fa-solid fa-trash fa-2xl"></i>
+                        </div>
+                        <div class="my-inline-pos">
+                            <p>Series:</p>
+                            <input type="text" placeholder="series">
+                        </div>
+                        <div class="my-inline-pos">
+                            <p>Reps:</p>
+                            <input type="text" placeholder="reps">
+                        </div>
                     </div>
+                    <div id="add-exe-btn-d1" class="add-exercise-btn" onclick="add_exercise(1)">
+                        <i class="fa-solid fa-plus fa-2xl"></i>
+                        <p class="p-add-workout">Add workout</p>
+                    </div>
+
 
                 </div>
             </div>
-        </form>
-    </div>
+            <input id="add-tng-day-btn" type="button" onclick="add_trainingday()" placeholder="add training day">
 
+    </div>
+</form>
 
 
 </div>
