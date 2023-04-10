@@ -18,7 +18,7 @@
 <div class="training-details-container">
     <div class="training-general-info-container">
         <div class="training-general-info">
-            <div class="training-item-fav">
+            <div class="training-item-fav" >
                 <i class="fa-regular fa-star fa-2xl"></i>
                 <i class="fa-solid fa-star fa-2xl"></i>
             </div>

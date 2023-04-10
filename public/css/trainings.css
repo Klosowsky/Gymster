@@ -149,7 +149,7 @@ section.trainings-sec{
     flex-direction: column;
     background: #3D4750;
     height:450px;
-    width: 250px;
+    width: 300px;
     border: 1px solid gray;
     border-radius: 20px;
 
@@ -178,6 +178,9 @@ section.trainings-sec{
 
 .training-box-exercise-list{
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .training-box-exercise{
@@ -235,6 +238,192 @@ section.trainings-sec{
     background: #555;
 }
 
+.add-training-general-info-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    height: 23%;
+    background: white;
+    align-self: center;
+}
+
+.add-training-title-box{
+    width: 20%;
+    height: 90%;
+    background: #3D4750;
+    border-radius: 20px;
+    border: 1px solid grey;
+
+}
+
+.add-training-title-header{
+    border-bottom: 1px solid grey;
+    font-size: 1.6em;
+    padding-left: 1em;
+}
+
+.add-training-title-header>p{
+    margin-block-end: 0.4em;
+    margin-block-start: 0.4em;
+
+}
+
+.add-training-title-content{
+    padding-left: 1em;
+}
+
+textarea.new-training-title{
+    background-color: transparent;
+    margin:0.4em;
+    padding: 0;
+    word-break: break-word;
+    width:80%;
+    height:10vh ;
+    border: none;
+    color:white;
+    font-size:1.4em;
+    resize: none;
+    display: block;
+}
+textarea.new-training-title:focus{
+    outline: none;
+}
+
+
+
+.add-training-desc-box{
+    width: 60%;
+    height: 90%;
+    background: #3D4750;
+    border-radius: 20px;
+    border: 1px solid grey;
+
+}
+
+.add-training-desc-header{
+    border-bottom: 1px solid grey;
+    font-size: 1.6em;
+    padding-left: 1em;
+}
+
+.add-training-desc-header>p{
+    margin-block-end: 0.4em;
+    margin-block-start: 0.4em;
+
+}
+
+.add-training-desc-content{
+    padding-left: 1em;
+}
+
+textarea.new-training-desc{
+    background-color: transparent;
+    margin:0.4em;
+    padding: 0;
+    word-break: break-word;
+    width:80%;
+    height:10vh ;
+    border: none;
+    color:white;
+    font-size:1.4em;
+    resize: none;
+    display: block;
+}
+textarea.new-training-desc:focus{
+    outline: none;
+}
+
+
+
+.add-training-buttons-box{
+    width: 15%;
+    height: 90%;
+    background: #3D4750;
+    border-radius: 20px;
+    border: 1px solid grey;
+
+}
+
+.add-training-form{
+    display: flex;
+    width: 100%;
+    height: 77%;
+
+
+}
+
+.training-add-days-container{
+    display: inline-grid;
+    grid-auto-flow: column;
+    height: 100%;
+    grid-gap: 5vw;
+    background: #505A63;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    align-items: center;
+    overflow-x:scroll;
+
+}
+
+.add-exercise-btn{
+    display: inline-flex;
+    width: 85%;
+    height: auto;
+    overflow: hidden;
+    background: #505A63;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 13px;
+}
+.add-exercise-btn>i{
+    color: white;
+    background: black;
+
+}
+.add-exercise-btn>p{
+    color:white;
+    font-size:1.3em;
+    padding-left: 1em;
+}
+
+.add-exercise-details{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.select-add-exercise{
+    width: 70%;
+    font-size: 1.2em;
+    color:white;
+    background: #505A63;
+    border: 1px solid gray;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 0.7em 0.7em 0.7em 1em;
+    margin: 0.7em 0.7em 0.7em 1em;
+
+}
+
+.add-exercise-details>.my-inline-pos>i{
+    padding-right: 10px;
+}
+
+.my-inline-pos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
 @media only screen and (max-device-width: 820px) {
 
     .training-item{
@@ -246,6 +435,7 @@ section.trainings-sec{
         border-bottom: 1px solid gray;
         flex-wrap: wrap;
         margin: 1em 0;
+        padding-bottom: 2em
 
     }
 
@@ -313,7 +503,7 @@ section.trainings-sec{
         display:flex;
         justify-content: center;
         align-items: center;
-        width:37vw;
+        width:36vw;
         order:5;
         margin: 0 0;
     }
@@ -411,5 +601,17 @@ section.trainings-sec{
         margin-block-end: 0;
     }
 
+
+    .training-add-days-container{
+        display: inline-grid;
+        grid-auto-flow: row;
+        gap: 80px;
+        height: auto;
+        width: 100%;
+        align-items: center;
+        overflow-x: unset;
+        overflow-y: unset;
+        padding: 70px 0 60px;
+    }
 
 }
