@@ -148,7 +148,7 @@ section.trainings-sec{
     display: flex;
     flex-direction: column;
     background: #3D4750;
-    height:450px;
+    height:85%;
     width: 300px;
     border: 1px solid gray;
     border-radius: 20px;
@@ -177,10 +177,12 @@ section.trainings-sec{
 }
 
 .training-box-exercise-list{
+    height:50vh;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .training-box-exercise{
@@ -245,7 +247,6 @@ section.trainings-sec{
     align-items: center;
     width: 90vw;
     height: 23%;
-    background: white;
     align-self: center;
 }
 
@@ -371,12 +372,13 @@ textarea.new-training-desc:focus{
     display: inline-flex;
     width: 85%;
     height: auto;
-    overflow: hidden;
     background: #505A63;
     justify-content: center;
     align-items: center;
     border: 1px solid gray;
     border-radius: 13px;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 .add-exercise-btn>i{
     color: white;
@@ -395,7 +397,8 @@ textarea.new-training-desc:focus{
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 15px;
+    border-bottom: 1px solid grey;
 }
 
 .select-add-exercise{
@@ -423,6 +426,18 @@ textarea.new-training-desc:focus{
 
 }
 
+.my-inline-pos>input{
+    width: 45%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: #505A63;
+    color:white;
+}
+
+.my-inline-pos>p{
+    padding-left:1em;
+    font-size: 1.3em;
+}
 
 @media only screen and (max-device-width: 820px) {
 

@@ -19,15 +19,44 @@
 
         function add_exercise(trainingDayId)
         {
+            console.log('inside_add_exercise');
             var trainingDayBtnId="#add-exe-btn-d"+trainingDayId;
             exerciseForDayCounter[trainingDayId]++;
             let newExerciseId="add-ex-"+trainingDayId+"-"+exerciseForDayCounter[trainingDayId];
-            $(trainingDayBtnId).before('<div class="add-excercise-details" id="'+newExerciseId+'"> <input type="text" placeholder="'+newExerciseId+'"> </div>');
-
+            /*$(trainingDayBtnId).before('<div class="add-excercise-details" id="'+newExerciseId+'"> <input type="text" placeholder="'+newExerciseId+'"> </div>');
+            */
+            $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="exc" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" onclick="delete_exercise('+newExerciseId+')"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text"  placeholder="Series"> </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" placeholder="Reps"> </div> </div>');
         }
-        function delete_exercise(rowno)
+        function delete_exercise(exercise_id)
         {
-            $('#'+rowno).remove();
+            console.log("del_ex: "+exercise_id);
+
+            var delimeterIndex = exercise_id.indexOf("-",7);
+            console.log("delimeterIndex= "+delimeterIndex);
+
+            var localTrainingDayId = exercise_id.substring(7,delimeterIndex);
+            var localDelExerciseId = exercise_id.substring(delimeterIndex+1)
+
+            console.log("trainingDayId= "+localTrainingDayId+" \nexerciseId= "+ localDelExerciseId);
+
+            $('#'+exercise_id).remove();
+            console.log("before loop");
+
+            var it = parseInt(localDelExerciseId)+1;
+
+            while(document.getElementById("add-ex-"+localTrainingDayId+"-"+it)!=null){
+                console.log("test add-ex-"+localTrainingDayId+"-"+it+"\n");
+
+                var tmpId=it-1;
+                document.getElementById("add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","add-ex-"+localTrainingDayId+"-"+tmpId)
+
+
+
+                it++;
+            }
+
+            console.log("after loop");
+
         }
 
         function add_trainingday()
@@ -36,8 +65,43 @@
             exerciseForDayCounter[trainingDayCounter]=0;
             const localTrainingDayId=trainingDayCounter;
             var trainingDayBtnId="#add-exe-btn-d"+trainingDayCounter;
-            $("#add-tng-day-btn").before('<div class="training-day-box" id="add-day-'+trainingDayCounter+'"> <div class="training-box-day-number"> <p>Day '+trainingDayCounter+'</p> </div> <div class="training-box-exercise-list" id="trn-day-'+trainingDayCounter+'"> <input id="add-exe-btn-d'+trainingDayCounter+'" type="button" onclick="add_exercise('+trainingDayCounter+')" placeholder="add exercise"> </div> </div>');
+            $("#add-tng-day-btn").before('<div class="training-day-box" id="add-day-'+trainingDayCounter+'"> <div class="training-box-day-number"> <p>Day '+trainingDayCounter+'</p> </div> <div class="training-box-exercise-list" id="trn-day-'+trainingDayCounter+'"> <div id="add-exe-btn-d'+trainingDayCounter+'" class="add-exercise-btn" onclick="add_exercise('+trainingDayCounter+')"><i class="fa-solid fa-plus fa-2xl"></i> <p class="p-add-workout">Add workout</p> </div> </div> </div>');
         }
+
+        function deleteTrainingDay(trainingDayId)
+        {
+            console.log("del_day: "+trainingDayId);
+
+
+            var localTrainingDayId = "add-day-"+trainingDayId;
+
+            $('#'+localTrainingDayId).remove();
+            console.log("before loop");
+
+            var it = parseInt(trainingDayId)+1;
+
+            while(document.getElementById("add-day-"+it)!=null){
+                console.log("test add-day-"+it+"\n");
+
+                // -------- TO DO: decrement id of training day divs/exercises inside and change day description
+                console.log(document.getElementById("add-day-"+it).innerHTML);
+                let content = document.getElementById("add-day-"+it);
+                console.log(content.firstElementChild.innerHTML);
+                var tmpNewDayId=it-1;
+                content.firstElementChild.innerHTML="<p>Day "+tmpNewDayId+"</p>";
+                trainingDayCounter--;
+
+
+
+
+                it++;
+            }
+
+            console.log("after loop");
+
+        }
+
+
     </script>
 
 </head>
@@ -84,24 +148,7 @@
                     <p>Day 1</p>
                 </div>
                 <div class="training-box-exercise-list" id="trn-day-1">
-                    <div class="add-exercise-details" id="add-ex-1-1">
-                        <div class="my-inline-pos">
-                            <select class="select-add-exercise" id="sel-exc-1-1" name="exc" >
-                                <option value="" selected disabled hidden>Choose exercise</option>
-                                <option value="bench_press">Bench press</option>
-                                <option value="deadlift">Deadlift</option>
-                            </select>
-                            <i class="fa-solid fa-trash fa-2xl"></i>
-                        </div>
-                        <div class="my-inline-pos">
-                            <p>Series:</p>
-                            <input type="text" placeholder="series">
-                        </div>
-                        <div class="my-inline-pos">
-                            <p>Reps:</p>
-                            <input type="text" placeholder="reps">
-                        </div>
-                    </div>
+
                     <div id="add-exe-btn-d1" class="add-exercise-btn" onclick="add_exercise(1)">
                         <i class="fa-solid fa-plus fa-2xl"></i>
                         <p class="p-add-workout">Add workout</p>
