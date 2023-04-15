@@ -10,6 +10,7 @@ Routing::get('register','DefaultController');
 Routing::get('trainings','DefaultController');
 Routing::get('trainingdetails','DefaultController');
 Routing::get('addtraining','DefaultController');
+Routing::post('uploadtraining','ProjectController');
 
 Routing::run($path);
 
