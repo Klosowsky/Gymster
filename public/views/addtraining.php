@@ -23,10 +23,15 @@
             var trainingDayBtnId="#add-exe-btn-d"+trainingDayId;
             exerciseForDayCounter[trainingDayId]++;
             let newExerciseId="add-ex-"+trainingDayId+"-"+exerciseForDayCounter[trainingDayId];
-            $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="exc[]" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="ser[]" placeholder="Series"> </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="reps[]" placeholder="Reps"> </div> </div>');
+            var arrName=""+trainingDayId;
+            /*$(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="exercise['+trainingDayId+'][]" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="series['+trainingDayId+'][]" placeholder="Series"> </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="reps['+trainingDayId+'][]" placeholder="Reps"> </div> </div>');
+*/
+           /* $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="training['+arrName+'][exercise'+newExerciseId+']" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="training['+arrName+'][series'+newExerciseId+']" placeholder="Series"> </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="training['+arrName+'][reps'+newExerciseId+']" placeholder="Reps"> </div> </div>');
+*/
+            $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="'+arrName+'[exercise]['+exerciseForDayCounter[trainingDayId]+']" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="'+arrName+'[series]['+exerciseForDayCounter[trainingDayId]+']" id="ser-'+newExerciseId+'" placeholder="Series" > </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="'+arrName+'[reps]['+exerciseForDayCounter[trainingDayId]+']" id="rep-'+newExerciseId+'" placeholder="Reps"> </div> </div>');
+
 
         }
-
 
         function delete_exercise(element)
         {
@@ -53,7 +58,13 @@
             while(document.getElementById("add-ex-"+localTrainingDayId+"-"+it)!=null){
                 console.log("test add-ex-"+localTrainingDayId+"-"+it+"\n");
                 var tmpId=it-1;
-                document.getElementById("add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","add-ex-"+localTrainingDayId+"-"+tmpId)
+                document.getElementById("add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","add-ex-"+localTrainingDayId+"-"+tmpId);
+                document.getElementById("sel-add-ex-"+localTrainingDayId+"-"+it).setAttribute("name",""+localTrainingDayId+"[exercise]["+exerciseForDayCounter[localTrainingDayId]+"]");
+                document.getElementById("sel-add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","sel-add-ex-"+localTrainingDayId+"-"+tmpId);
+                document.getElementById("ser-add-ex-"+localTrainingDayId+"-"+it).setAttribute("name",""+localTrainingDayId+"[series]["+exerciseForDayCounter[localTrainingDayId]+"]");
+                document.getElementById("ser-add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","ser-add-ex-"+localTrainingDayId+"-"+tmpId);
+                document.getElementById("rep-add-ex-"+localTrainingDayId+"-"+it).setAttribute("name",""+localTrainingDayId+"[reps]["+exerciseForDayCounter[localTrainingDayId]+"]");
+                document.getElementById("rep-add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","rep-add-ex-"+localTrainingDayId+"-"+tmpId);
                 it++;
             }
             console.log("after loop");
@@ -170,13 +181,9 @@
                     </div>
                     <div class="training-box-exercise-list" id="trn-day-1">
 
-                         <!--
-                         TO DO : cover names for inputs - match them with exercise id etc. 
-                         -->
-
                         <!--<div class="add-exercise-details" id="'+newExerciseId+'">
                             <div class="my-inline-pos">
-                                <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="exc" >
+                                <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="ex" >
                                     <option value="" selected disabled hidden>Choose exercise</option>
                                     <option value="bench_press">Bench press</option>
                                     <option value="deadlift">Deadlift</option>
