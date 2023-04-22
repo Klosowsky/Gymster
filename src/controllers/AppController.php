@@ -19,6 +19,7 @@ class AppController
 
     protected function render(string $view = null, array $messages = [])
     {
+        //die($view);
         $path = 'public/views/' . $view . '.php';
         $output = 'page not found';
         if (file_exists($path)) {

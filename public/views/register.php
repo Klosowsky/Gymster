@@ -16,14 +16,21 @@
             </div>
         </div>
         <div class="register-container">
-            <form class="register">
+            <form method="POST" action="register" class="register">
                 <input name="username" type="text" placeholder="username">
                 <input name="email" type="text" placeholder="email@email.com">
                 <input name="password" type="password" placeholder="password">
-                <input name="password" type="password" placeholder="repeat password">
+                <input name="repatPassword" type="password" placeholder="repeat password">
                 <div class="checkbox-inline"><input name="check" type="checkbox"><label for="check" class="check-label">Wyrazam...</label></div>
-                <button>Register</button>
+                <button type="submit">Register</button>
             </form>
+            <?php
+            if(isset($messages)){
+                foreach($messages as $message) {
+                    echo $message;
+                }
+            }
+            ?>
         </div>
     </div>
 

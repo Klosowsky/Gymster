@@ -1,7 +1,8 @@
 <?php
 
 require_once 'src/controllers/DefaultController.php';
-require_once 'src/controllers/LoginController.php';
+require_once 'src/controllers/SecurityController.php';
+require_once 'src/controllers/TrainingController.php';
 
 class Routing {
     public static $routes;
@@ -15,7 +16,8 @@ class Routing {
     }
 
     public static function run($url){
-        $action= explode("/",$url)[0];
+       /* $action= explode("/",$url)[0];
+        $param = explode("/",$url)[1];
         
         if(!array_key_exists($action,self::$routes)){
             die("Wrong url");
@@ -24,9 +26,26 @@ class Routing {
         $controller=self::$routes[$action];
         $object = new $controller;
         $action = $action ?: 'index';
+        if($param != null){
+            $object->$action($param);
+        }
+        else {
+            $object->$action();
+        }*/
+        $urlParts = explode("/", $url);
+        $action = $urlParts[0];
 
-        $object->$action();
+        if (!array_key_exists($action, self::$routes)) {
+            die("Wrong url!");
+        }
 
+        $controller = self::$routes[$action];
+        $object = new $controller;
+        $action = $action ?: 'index';
+
+        $id = $urlParts[1] ?? '';
+
+        $object->$action($id);
     }
 
 

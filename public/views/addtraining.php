@@ -23,12 +23,28 @@
             var trainingDayBtnId="#add-exe-btn-d"+trainingDayId;
             exerciseForDayCounter[trainingDayId]++;
             let newExerciseId="add-ex-"+trainingDayId+"-"+exerciseForDayCounter[trainingDayId];
-            /*$(trainingDayBtnId).before('<div class="add-excercise-details" id="'+newExerciseId+'"> <input type="text" placeholder="'+newExerciseId+'"> </div>');
-            */
-            $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="exc" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" onclick="delete_exercise('+newExerciseId+')"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text"  placeholder="Series"> </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" placeholder="Reps"> </div> </div>');
+            var arrName=""+trainingDayId;
+            /*$(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="exercise['+trainingDayId+'][]" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="series['+trainingDayId+'][]" placeholder="Series"> </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="reps['+trainingDayId+'][]" placeholder="Reps"> </div> </div>');
+*/
+           /* $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="training['+arrName+'][exercise'+newExerciseId+']" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="training['+arrName+'][series'+newExerciseId+']" placeholder="Series"> </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="training['+arrName+'][reps'+newExerciseId+']" placeholder="Reps"> </div> </div>');
+*/
+            /*var test1="";
+            test1 = */
+
+            $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="'+arrName+'[exercise]['+exerciseForDayCounter[trainingDayId]+']" > ' +
+                '<option value="" selected disabled hidden>Choose exercise</option> ' +
+                '<?php  if(isset($exercises)){ foreach($exercises as $exercise) :?><option value="<?= $exercise->getExerciseId();?>"> <?= $exercise->getExerciseName();?> </option> <?php endforeach;}?>'+
+                '</select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="'+arrName+'[series]['+exerciseForDayCounter[trainingDayId]+']" id="ser-'+newExerciseId+'" placeholder="Series" > </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="'+arrName+'[reps]['+exerciseForDayCounter[trainingDayId]+']" id="rep-'+newExerciseId+'" placeholder="Reps"> </div> </div>');
+
+
         }
-        function delete_exercise(exercise_id)
+
+        function delete_exercise(element)
         {
+
+            console.log('inside_del_exercise');
+
+            var exercise_id = String($(element).parent().parent().attr("id"));
             console.log("del_ex: "+exercise_id);
 
             var delimeterIndex = exercise_id.indexOf("-",7);
@@ -40,21 +56,23 @@
             console.log("trainingDayId= "+localTrainingDayId+" \nexerciseId= "+ localDelExerciseId);
 
             $('#'+exercise_id).remove();
+            exerciseForDayCounter[localTrainingDayId]--;
+
             console.log("before loop");
 
             var it = parseInt(localDelExerciseId)+1;
-
             while(document.getElementById("add-ex-"+localTrainingDayId+"-"+it)!=null){
                 console.log("test add-ex-"+localTrainingDayId+"-"+it+"\n");
-
                 var tmpId=it-1;
-                document.getElementById("add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","add-ex-"+localTrainingDayId+"-"+tmpId)
-
-
-
+                document.getElementById("add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","add-ex-"+localTrainingDayId+"-"+tmpId);
+                document.getElementById("sel-add-ex-"+localTrainingDayId+"-"+it).setAttribute("name",""+localTrainingDayId+"[exercise]["+exerciseForDayCounter[localTrainingDayId]+"]");
+                document.getElementById("sel-add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","sel-add-ex-"+localTrainingDayId+"-"+tmpId);
+                document.getElementById("ser-add-ex-"+localTrainingDayId+"-"+it).setAttribute("name",""+localTrainingDayId+"[series]["+exerciseForDayCounter[localTrainingDayId]+"]");
+                document.getElementById("ser-add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","ser-add-ex-"+localTrainingDayId+"-"+tmpId);
+                document.getElementById("rep-add-ex-"+localTrainingDayId+"-"+it).setAttribute("name",""+localTrainingDayId+"[reps]["+exerciseForDayCounter[localTrainingDayId]+"]");
+                document.getElementById("rep-add-ex-"+localTrainingDayId+"-"+it).setAttribute("id","rep-add-ex-"+localTrainingDayId+"-"+tmpId);
                 it++;
             }
-
             console.log("after loop");
 
         }
@@ -63,44 +81,65 @@
         {
             trainingDayCounter++;
             exerciseForDayCounter[trainingDayCounter]=0;
-            const localTrainingDayId=trainingDayCounter;
-            var trainingDayBtnId="#add-exe-btn-d"+trainingDayCounter;
-            $("#add-tng-day-btn").before('<div class="training-day-box" id="add-day-'+trainingDayCounter+'"> <div class="training-box-day-number"> <p>Day '+trainingDayCounter+'</p> </div> <div class="training-box-exercise-list" id="trn-day-'+trainingDayCounter+'"> <div id="add-exe-btn-d'+trainingDayCounter+'" class="add-exercise-btn" onclick="add_exercise('+trainingDayCounter+')"><i class="fa-solid fa-plus fa-2xl"></i> <p class="p-add-workout">Add workout</p> </div> </div> </div>');
+            $('#delete-trng-day-icon').remove();
+            $("#add-tng-day-btn").before('<div class="training-day-box" id="add-day-'+trainingDayCounter+'"> <div class="training-box-day-number"> <i class="fa-solid fa-chevron-up fa-xl" id="collapse-training-day" onclick="collapseTrainingDay(this)"></i> <p>Day '+trainingDayCounter+'</p> <i class="fa-solid fa-trash fa-xl" id="delete-trng-day-icon" style="position: absolute; right: 20px;" onclick="deleteLastTrainingDay()"></i> </div> <div class="training-box-exercise-list" id="trn-day-'+trainingDayCounter+'"> <div id="add-exe-btn-d'+trainingDayCounter+'" class="add-exercise-btn" onclick="add_exercise('+trainingDayCounter+')"><i class="fa-solid fa-plus fa-2xl"></i> <p class="p-add-workout">Add exercise</p> </div> </div> </div>');
         }
 
-        function deleteTrainingDay(trainingDayId)
-        {
-            console.log("del_day: "+trainingDayId);
+        function deleteLastTrainingDay() {
+            console.log("del_day");
 
+            var localTrainingDayId = "add-day-" + trainingDayCounter;
 
-            var localTrainingDayId = "add-day-"+trainingDayId;
+            $('#' + localTrainingDayId).remove();
+            exerciseForDayCounter[trainingDayCounter] = 0;
+            trainingDayCounter--;
 
-            $('#'+localTrainingDayId).remove();
-            console.log("before loop");
+            if (trainingDayCounter > 1) {
+                var lastTrainingDay = document.getElementById("add-day-" + trainingDayCounter).firstElementChild.innerHTML;
+                /*document.getElementById("add-day-" + trainingDayCounter).firstElementChild.innerHTML = '<p>Day ' + trainingDayCounter + '</p> <i class="fa-solid fa-trash fa-xl" id="delete-trng-day-icon" style="position: absolute; right: 20px;" onclick="deleteLastTrainingDay()"></i>';
+            */
+                var lastTrainingDay1 = document.getElementById("add-day-" + trainingDayCounter).firstElementChild;
+                var pElem=lastTrainingDay1.querySelector("p");
+                console.log(pElem.innerHTML);
+                $(pElem).after('<i class="fa-solid fa-trash fa-xl" id="delete-trng-day-icon" style="position: absolute; right: 20px;" onclick="deleteLastTrainingDay()"></i>'); //
 
-            var it = parseInt(trainingDayId)+1;
-
-            while(document.getElementById("add-day-"+it)!=null){
-                console.log("test add-day-"+it+"\n");
-
-                // -------- TO DO: decrement id of training day divs/exercises inside and change day description
-                console.log(document.getElementById("add-day-"+it).innerHTML);
-                let content = document.getElementById("add-day-"+it);
-                console.log(content.firstElementChild.innerHTML);
-                var tmpNewDayId=it-1;
-                content.firstElementChild.innerHTML="<p>Day "+tmpNewDayId+"</p>";
-                trainingDayCounter--;
-
-
-
-
-                it++;
             }
 
-            console.log("after loop");
-
         }
 
+        function collapseTrainingDay(element){
+            console.log('test')
+            var trainingDayId= String($(element).parent().parent().attr("id"));
+            console.log('id of day: '+trainingDayId);
+            var dayListId = "#add-day-"+trainingDayId.substring(8);
+            console.log('num of day: '+dayListId);
+            var exListElem= document.getElementById("trn-day-"+trainingDayId.substring(8));
+
+            var dayElement= document.querySelector(dayListId);
+            var iElem = dayElement.querySelector("#collapse-training-day");
+
+            exListElem.style.display="none";
+            iElem.onclick= function () { expandTrainingDay(this);};
+            iElem.className="fa-solid fa-chevron-down  fa-xl";
+        }
+
+        function expandTrainingDay(element){
+            console.log('expand')
+            var trainingDayId= String($(element).parent().parent().attr("id"));
+            console.log('id of day: '+trainingDayId);
+            var dayListId = "#add-day-"+trainingDayId.substring(8);
+            console.log('num of day: '+dayListId);
+            var exListElem= document.getElementById("trn-day-"+trainingDayId.substring(8));
+
+            var dayElement= document.querySelector(dayListId);
+            var iElem = dayElement.querySelector("#collapse-training-day");
+
+            exListElem.style.display="flex";
+            iElem.onclick= function () { collapseTrainingDay(this);};
+            iElem.className="fa-solid fa-chevron-up  fa-xl";
+
+
+        }
 
     </script>
 
@@ -116,7 +155,7 @@
                 <p>Title</p>
             </div>
             <div class="add-training-title-content">
-                <textarea maxlength="50" class="new-training-title" placeholder="Your title..."></textarea>
+                <textarea form="training-form" maxlength="50" class="new-training-title" name="trng-title" placeholder="Your title..."></textarea>
             </div>
         </div>
 
@@ -125,42 +164,64 @@
                 <p>Description</p>
             </div>
             <div class="add-training-desc-content">
-                <textarea maxlength="50" class="new-training-desc" placeholder="Your description..."></textarea>
+                <textarea form="training-form" maxlength="100" class="new-training-desc" name="trng-desc" placeholder="Your description..."></textarea>
             </div>
         </div>
 
         <div class="add-training-buttons-box">
-            <div class="upload-new-training">
-                Add training
-            </div>
-            <div class="delete-new-training">
-                Add training
+            <div class="upload-training" onClick="document.forms['training-form'].submit();">
+                <i class="fa-sharp fa-solid fa-arrow-up-from-bracket fa-2xl"></i>
+                <p class="p-add-workout">Upload training</p>
             </div>
 
 
         </div>
 
     </div>
-    <form action="/add-training" method="post" class="add-training-form">
-    <div class="training-add-days-container">
-            <div class="training-day-box" id="add-day-1">
-                <div class="training-box-day-number">
-                    <p>Day 1</p>
-                </div>
-                <div class="training-box-exercise-list" id="trn-day-1">
-
-                    <div id="add-exe-btn-d1" class="add-exercise-btn" onclick="add_exercise(1)">
-                        <i class="fa-solid fa-plus fa-2xl"></i>
-                        <p class="p-add-workout">Add workout</p>
+    <form id="training-form" name="training-form" action="/uploadtraining" method="post" class="add-training-form">
+        <div class="training-add-days-container">
+                <div class="training-day-box" id="add-day-1">
+                    <div class="training-box-day-number">
+                        <i class="fa-solid fa-chevron-up fa-xl" id="collapse-training-day" onclick="collapseTrainingDay(this)"></i>
+                        <p>Day 1</p>
                     </div>
+                    <div class="training-box-exercise-list" id="trn-day-1">
+
+                        <!--<div class="add-exercise-details" id="'+newExerciseId+'">
+                            <div class="my-inline-pos">
+                                <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="ex" >
+                                    <option value="" selected disabled hidden>Choose exercise</option>
+                                    <option value="bench_press">Bench press</option>
+                                    <option value="deadlift">Deadlift</option>
+                                </select>
+                                <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i>
+                            </div>
+                            <div class="my-inline-pos">
+                                <p>Series:</p>
+                                <input name="ser" type="text"  placeholder="Series">
+                            </div> <div class="my-inline-pos">
+                                <p>Reps:</p>
+                                <input name="rep" type="text" placeholder="Reps">
+                            </div>
+                        </div>-->
 
 
+
+
+                        <div id="add-exe-btn-d1" class="add-exercise-btn" onclick="add_exercise(1)">
+                            <i class="fa-solid fa-plus fa-2xl"></i>
+                            <p class="p-add-workout">Add exercise</p>
+                        </div>
+
+
+                    </div>
                 </div>
+            <div id="add-tng-day-btn" class="add-training-day-btn" onclick="add_trainingday()" >
+                <i class="fa-solid fa-plus fa-2xl"></i>
             </div>
-            <input id="add-tng-day-btn" type="button" onclick="add_trainingday()" placeholder="add training day">
 
-    </div>
-</form>
+        </div>
+    </form>
 
 
 </div>

@@ -66,3 +66,55 @@ alter table users
 
 alter sequence user_user_id_seq owned by users.user_id;
 
+create table trainings
+(
+    training_id serial
+        primary key,
+    user_id     integer not null
+        constraint trainings_users_user_id_fk
+            references users,
+    title       varchar,
+    description varchar
+);
+
+alter table trainings
+    owner to dbuser;
+
+create table training_days
+(
+    training_day_id serial
+        primary key,
+    training_id     integer
+        constraint training_days_trainings_training_id_fk
+            references trainings,
+    day_number      integer
+);
+
+alter table training_days
+    owner to dbuser;
+
+create table exercises
+(
+    exercise_id serial
+        primary key,
+    name        varchar
+);
+
+alter table exercises
+    owner to dbuser;
+
+create table training_sessions
+(
+    training_day_id integer
+        constraint training_sessions_training_days_training_day_id_fk
+            references training_days,
+    exercise_id     integer
+        constraint training_sessions_exercises_exercise_id_fk
+            references exercises,
+    series          integer,
+    reps            integer
+);
+
+alter table training_sessions
+    owner to dbuser;
+

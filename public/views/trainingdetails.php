@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
-    <link rel="stylesheet" type="text/css" href="public/css/trainings.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/trainings.css">
+    <style>body {background:lightcyan;}</style>
     <meta charset="UTF-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
@@ -23,13 +24,12 @@
                 <i class="fa-solid fa-star fa-2xl"></i>
             </div>
             <div class="training-item-title">
-                FBW training
+                <?php
+                if(isset($training)){?>
+                    <?=$training->getTrainingTitle(); ?>
             </div>
             <div class="training-item-descr">
-                This training is for...11<br>
-                This training is for...<br>
-                This training is for...ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab<br>
-                This training is for...<br>
+                <?=$training->getTrainingDescription();?>
             </div>
             <div class="training-item-rate">
                 <div class="likes">
@@ -42,7 +42,7 @@
             </div>
             <div class="training-photo-position">
                 <div class="training-user-photo">
-                    <img class="user-profile-img" src="public/uploads/Will_Smith.jpg">
+                    <img class="user-profile-img" src="../public/uploads/Will_Smith.jpg">
                 </div>
             </div>
             <div class="training-username"> <p>ExampleUser123</p>
@@ -51,22 +51,27 @@
         </div>
     </div>
     <div class="training-days-container">
-        <?php for($i = 0; $i < 9; $i += 1): ?>
+        <?php
+        $trainingDays=$training->getTrainingDays();
+        foreach ($trainingDays as $trainingDay) :
+            ?>
             <div class="training-day-box">
                 <div class="training-box-day-number">
-                    <p>Day 1</p>
+                    <p>Day <?=$trainingDay->getDayNumber()?></p>
                 </div>
                 <div class="training-box-exercise-list">
-                    <?php for($j = 0; $j < 9; $j += 1): ?>
+                    <?php $exercises=$trainingDay->getExercises();
+                    foreach ($exercises as $exercise) :
+                        ?>
                         <div class="training-box-exercise">
-                            <p class="p-exercise-name">Bench press</p>
-                            <p class="p-exercise-details"> 3 series</p>
-                            <p class="p-exercise-details"> 12 reps</p>
+                            <p class="p-exercise-name"><?=$exercise->getExercise()->getExerciseName()?></p>
+                            <p class="p-exercise-details"> <?=$exercise->getSeries()?> series</p>
+                            <p class="p-exercise-details"> <?=$exercise->getReps()?> reps</p>
                         </div>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
-        <?php endfor; ?>
+        <?php endforeach; }?>
     </div>
 
 </div>

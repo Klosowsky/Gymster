@@ -173,6 +173,7 @@ section.trainings-sec{
     align-items: center;
     font-size: 1.6em;
     font-weight: bold;
+    position: relative;
 
 }
 
@@ -341,10 +342,33 @@ textarea.new-training-desc:focus{
 .add-training-buttons-box{
     width: 15%;
     height: 90%;
-    background: #3D4750;
-    border-radius: 20px;
-    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+}
+
+.upload-training{
+    display: inline-flex;
+    width: 100%;
+    height: auto;
+    background: #3D4750;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 13px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.upload-training>i{
+    color: white;
+
+}
+.upload-training>p{
+    color:white;
+    font-size:1.3em;
+    padding-left: 1em;
 }
 
 .add-training-form{
@@ -414,6 +438,8 @@ textarea.new-training-desc:focus{
 
 }
 
+
+
 .add-exercise-details>.my-inline-pos>i{
     padding-right: 10px;
 }
@@ -439,14 +465,38 @@ textarea.new-training-desc:focus{
     font-size: 1.3em;
 }
 
+.del-trng-day-icon{
+    position: absolute;
+
+}
+
+.add-training-day-btn{
+    background: #3D4750;
+    border: 1px solid grey;
+    border-radius: 10px;
+    width:85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#collapse-training-day{
+    display: none;
+}
+
+#expand-training-day{
+    display: none;
+}
+
 @media only screen and (max-device-width: 820px) {
 
-    .training-item{
-        display:flex;
+    .training-item {
+        display: flex;
         flex-direction: row;
         align-items: center;
-        width:100%;
-        height:auto;
+        width: 100%;
+        height: auto;
         border-bottom: 1px solid gray;
         flex-wrap: wrap;
         margin: 1em 0;
@@ -455,57 +505,57 @@ textarea.new-training-desc:focus{
     }
 
 
-    .training-item-fav{
-        display:flex;
+    .training-item-fav {
+        display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 0;
-        width:30%;
-        order:0;
+        width: 30%;
+        order: 0;
     }
 
 
-    .training-item-title{
-        display:flex;
-        width:70%;
+    .training-item-title {
+        display: flex;
+        width: 70%;
         align-items: center;
-        font-size:2.1em;
+        font-size: 2.1em;
         font-weight: bold;
-        order:1;
+        order: 1;
     }
 
-    .training-item-descr{
-        display:flex;
+    .training-item-descr {
+        display: flex;
         align-items: center;
 
         overflow-wrap: break-word;
-        width:100%;
-        font-size:1.5em;
+        width: 100%;
+        font-size: 1.5em;
         padding: 2em 2em;
-        order:2;
+        order: 2;
     }
 
-    .training-item-rate{
-        display:flex;
+    .training-item-rate {
+        display: flex;
         justify-content: center;
         align-items: center;
-        width:25vw;
+        width: 25vw;
         flex-direction: column;
         margin: 0 0;
-        order:3;
+        order: 3;
     }
 
-    .training-photo-position{
-        width:27vw;
+    .training-photo-position {
+        width: 27vw;
         height: auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        order:4;
+        order: 4;
     }
 
-    .training-user-photo{
-        width:25vw;
+    .training-user-photo {
+        width: 25vw;
         height: 25vw;
         border-radius: 50%;
         margin-left: 0;
@@ -514,20 +564,20 @@ textarea.new-training-desc:focus{
         border: 1px solid gray;
     }
 
-    .training-username{
-        display:flex;
+    .training-username {
+        display: flex;
         justify-content: center;
         align-items: center;
-        width:36vw;
-        order:5;
+        width: 36vw;
+        order: 5;
         margin: 0 0;
     }
 
-    .training-username>p{
-        font-size:1em;
+    .training-username > p {
+        font-size: 1em;
     }
 
-    .training-details-container{
+    .training-details-container {
         overflow-y: scroll;
     }
 
@@ -535,12 +585,18 @@ textarea.new-training-desc:focus{
         height: auto;
 
     }
-    .training-general-info{
-        display:flex;
+
+    .select-add-exercise option{
+        font-size: 0.5em;
+
+    }
+
+    .training-general-info {
+        display: flex;
         flex-direction: row;
         align-items: center;
-        width:90vw;
-        height:auto;
+        width: 90vw;
+        height: auto;
         padding-top: 2em;
         padding-bottom: 2em;
         border-bottom: 1px solid gray;
@@ -548,7 +604,7 @@ textarea.new-training-desc:focus{
         margin: 1em 1em;
     }
 
-    .training-days-container{
+    .training-days-container {
         display: inline-grid;
         grid-auto-flow: row;
         gap: 80px;
@@ -560,11 +616,11 @@ textarea.new-training-desc:focus{
         padding: 70px 0 60px;
     }
 
-    .training-day-box{
+    .training-day-box {
         display: flex;
         flex-direction: column;
         background: #3D4750;
-        height:auto;
+        height: auto;
         width: 90vw;
         border: 1px solid gray;
         border-radius: 20px;
@@ -572,7 +628,7 @@ textarea.new-training-desc:focus{
 
     }
 
-    .training-box-day-number{
+    .training-box-day-number {
         height: auto;
         width: 100%;
         border-bottom: 1px solid gray;
@@ -581,43 +637,43 @@ textarea.new-training-desc:focus{
         align-items: center;
 
 
-
     }
-    .training-box-day-number>p{
+
+    .training-box-day-number > p {
         font-size: 1.5em;
         margin-block-start: 0.6em;
         margin-block-end: 0.6em;
 
     }
 
-    .training-box-exercise-list{
-        overflow-y: scroll;
+    .training-box-exercise-list {
+        height: auto;
     }
 
 
-    .training-box-exercise{
+    .training-box-exercise {
         margin-left: 60px;
         margin-bottom: 70px;
-        margin-top:60px;
-        font-size:3em;
+        margin-top: 60px;
+        font-size: 3em;
     }
 
-    .training-box-exercise>.p-exercise-name{
-        font-size:0.7em;
+    .training-box-exercise > .p-exercise-name {
+        font-size: 0.7em;
         font-weight: bold;
         margin-block-end: 0;
         margin-block-start: 0;
     }
 
-    .training-box-exercise>.p-exercise-details{
-        font-size:0.7em;
+    .training-box-exercise > .p-exercise-details {
+        font-size: 0.7em;
         color: gray;
         margin-block-start: 0;
         margin-block-end: 0;
     }
 
 
-    .training-add-days-container{
+    .training-add-days-container {
         display: inline-grid;
         grid-auto-flow: row;
         gap: 80px;
@@ -629,4 +685,105 @@ textarea.new-training-desc:focus{
         padding: 70px 0 60px;
     }
 
+
+    .add-training-general-info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: normal;
+        align-items: center;
+        width: 90vw;
+        height: auto;
+        align-self: center;
+        gap:30px;
+
+    }
+
+    .add-training-title-box{
+
+        width: 100%;
+        height: auto;
+        background: #3D4750;
+        order:1;
+    }
+
+    .add-training-desc-box{
+        width: 100%;
+        height: auto;
+        background: #3D4750;
+        border-radius: 20px;
+        border: 1px solid grey;
+        order:2;
+    }
+
+    .add-training-buttons-box{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        order:0;
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
+
+    .upload-training{
+
+        background: #3D4750;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid gray;
+        border-radius: 13px;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .upload-training>p {
+        FONT-WEIGHT: bold;
+        color: white;
+        font-size: 2em;
+        padding-left: 1em;
+        margin-block-start: 0.6em;
+        margin-block-end: 0.6em;
+    }
+
+    textarea.new-training-desc{
+        width:90%;
+        height:20vh ;
+    }
+
+    textarea.new-training-title{
+        width:90%;
+    }
+
+    .add-training-title-header>p{
+        font-size: 1.2em;
+    }
+
+    .add-training-desc-header>p{
+        font-size: 1.2em;
+    }
+
+    .add-training-day-btn{
+        justify-self: center;
+        width: 5em;
+        height: 5em;
+
+    }
+
+    #collapse-training-day{
+        position: absolute;
+        left: 0.8em;
+        display: flex;
+    }
+
+    #expand-training-day{
+        position: absolute;
+        left: 0.8em;
+        display: flex;
+    }
+
+    .add-training-form{
+        height: auto;
+    }
 }

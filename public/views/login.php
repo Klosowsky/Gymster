@@ -27,7 +27,7 @@
                     }
 
                 ?></div>
-                <label for="register">Don't have an account? Register <b>here</b></label>
+                <label for="register">Don't have an account? Register <b><a href="/register">here</a></b></label>
             </form>
         </div>
     </div>
