@@ -4,6 +4,13 @@ class ExerciseModel
 {
     private $exerciseId;
     private $exerciseName;
+
+    public function __construct($exerciseId, $exerciseName)
+    {
+        $this->exerciseId = $exerciseId;
+        $this->exerciseName = $exerciseName;
+    }
+
     public function getExerciseId()
     {
         return $this->exerciseId;

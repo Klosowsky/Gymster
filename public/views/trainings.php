@@ -57,21 +57,18 @@
     </div>
     <div class="trainings-main-container">
         <section class="trainings-sec">
-            <?php for($i = 0; $i < 10; $i += 1): ?>
-            <a href="/trainingdetails">
+            <?php  if(isset($trainings)){ foreach($trainings as $training) :?>
+            <a href="/trainingdetails/<?= $training->getTrainingId()?>">
             <div class="training-item">
                 <div class="training-item-fav">
                     <i class="fa-regular fa-star fa-2xl"></i>
                     <i class="fa-solid fa-star fa-2xl"></i>
                 </div>
                 <div class="training-item-title">
-                    FBW training
+                    <?= $training->getTrainingTitle()?>
                 </div>
                 <div class="training-item-descr">
-                    This training is for...<br>
-                    This training is for...<br>
-                    This training is for...ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab ababab<br>
-                    This training is for...<br>
+                    <?= $training->getTrainingDescription()?>
                 </div>
                 <div class="training-item-rate">
                     <div class="likes">
@@ -92,7 +89,7 @@
                 </div>
 
             </div></a>
-        <?php endfor; ?>
+        <?php endforeach; }?>
         </section>
     </div>
 

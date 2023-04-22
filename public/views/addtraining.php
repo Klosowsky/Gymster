@@ -28,7 +28,13 @@
 */
            /* $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="training['+arrName+'][exercise'+newExerciseId+']" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="training['+arrName+'][series'+newExerciseId+']" placeholder="Series"> </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="training['+arrName+'][reps'+newExerciseId+']" placeholder="Reps"> </div> </div>');
 */
-            $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="'+arrName+'[exercise]['+exerciseForDayCounter[trainingDayId]+']" > <option value="" selected disabled hidden>Choose exercise</option> <option value="bench_press">Bench press</option> <option value="deadlift">Deadlift</option> </select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="'+arrName+'[series]['+exerciseForDayCounter[trainingDayId]+']" id="ser-'+newExerciseId+'" placeholder="Series" > </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="'+arrName+'[reps]['+exerciseForDayCounter[trainingDayId]+']" id="rep-'+newExerciseId+'" placeholder="Reps"> </div> </div>');
+            /*var test1="";
+            test1 = */
+
+            $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="'+arrName+'[exercise]['+exerciseForDayCounter[trainingDayId]+']" > ' +
+                '<option value="" selected disabled hidden>Choose exercise</option> ' +
+                '<?php  if(isset($exercises)){ foreach($exercises as $exercise) :?><option value="<?= $exercise->getExerciseId();?>"> <?= $exercise->getExerciseName();?> </option> <?php endforeach;}?>'+
+                '</select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="'+arrName+'[series]['+exerciseForDayCounter[trainingDayId]+']" id="ser-'+newExerciseId+'" placeholder="Series" > </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="'+arrName+'[reps]['+exerciseForDayCounter[trainingDayId]+']" id="rep-'+newExerciseId+'" placeholder="Reps"> </div> </div>');
 
 
         }
@@ -149,7 +155,7 @@
                 <p>Title</p>
             </div>
             <div class="add-training-title-content">
-                <textarea maxlength="50" class="new-training-title" placeholder="Your title..."></textarea>
+                <textarea form="training-form" maxlength="50" class="new-training-title" name="trng-title" placeholder="Your title..."></textarea>
             </div>
         </div>
 
@@ -158,7 +164,7 @@
                 <p>Description</p>
             </div>
             <div class="add-training-desc-content">
-                <textarea maxlength="100" class="new-training-desc" placeholder="Your description..."></textarea>
+                <textarea form="training-form" maxlength="100" class="new-training-desc" name="trng-desc" placeholder="Your description..."></textarea>
             </div>
         </div>
 
@@ -198,6 +204,9 @@
                                 <input name="rep" type="text" placeholder="Reps">
                             </div>
                         </div>-->
+
+
+
 
                         <div id="add-exe-btn-d1" class="add-exercise-btn" onclick="add_exercise(1)">
                             <i class="fa-solid fa-plus fa-2xl"></i>

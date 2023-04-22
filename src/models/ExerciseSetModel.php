@@ -49,4 +49,7 @@ class ExerciseSetModel
     }
 
 
+    public function printExercise(){
+        print('series: '.$this->series);
+    }
 }

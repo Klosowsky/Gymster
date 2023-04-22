@@ -7,6 +7,7 @@ class TrainingDayBuilder
 {
     private $trainingDay;
 
+
     public function __construct(){
         $this->reset();
     }
@@ -19,6 +20,9 @@ class TrainingDayBuilder
         $tmpExercises=$this->trainingDay->getExercises();
         $tmpExercises[]=$exerciseSet;
         $this->trainingDay->setExercises($tmpExercises);
+    }
+    public function addDayNumber($dayNumber){
+        $this->trainingDay->setDayNumber($dayNumber);
     }
 
     public function build() : TrainingDayModel {

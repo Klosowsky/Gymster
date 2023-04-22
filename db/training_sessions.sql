@@ -18,3 +18,4 @@ INSERT INTO public.training_sessions (training_day_id, exercise_id, series, reps
 INSERT INTO public.training_sessions (training_day_id, exercise_id, series, reps) VALUES (2, 1, 3, 10);
 INSERT INTO public.training_sessions (training_day_id, exercise_id, series, reps) VALUES (3, 2, 2, 9);
 INSERT INTO public.training_sessions (training_day_id, exercise_id, series, reps) VALUES (3, 1, 5, 3);
+

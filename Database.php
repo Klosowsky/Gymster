@@ -19,14 +19,14 @@ class Database
     public function connect()
     {
         try {
-            print('HERE1');
+            //print('HERE1');
             $conn = new PDO(
                 "pgsql:host=$this->host;port=5432;dbname=$this->database",
                 $this->username,
                 $this->password,
                 ["sslmode"  => "prefer"]
             );
-            print('HERE');
+            //print('HERE');
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $conn;

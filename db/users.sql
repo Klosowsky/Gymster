@@ -18,3 +18,6 @@ alter table users
     owner to dbuser;
 
 INSERT INTO public.users (user_id, privilege_id, username, password) VALUES (3, 1, 'test_user', 'pass');
+
+
+

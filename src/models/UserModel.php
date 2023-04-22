@@ -5,6 +5,27 @@ class UserModel
 {
     private $login;
     private $password;
+    private $priviledge;
+    private $email;
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function getPriviledge()
+    {
+        return $this->priviledge;
+    }
+
+    public function setPriviledge($priviledge)
+    {
+        $this->priviledge = $priviledge;
+    }
 
     public function __construct($login, $password)
     {

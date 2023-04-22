@@ -19,6 +19,21 @@ class TrainingBuilder
         $this->trainingModel->setTrainingDays($tmpTrainingDays);
     }
 
+    public function addTrainingTitle($trainingTitle){
+        $this->trainingModel->setTrainingTitle($trainingTitle);
+    }
+
+    public function addTrainingDescription($trainingDesc){
+        $this->trainingModel->setTrainingDescription($trainingDesc);
+    }
+    public function addTrainingUserId($trainingUserId){
+        $this->trainingModel->setUserId($trainingUserId);
+    }
+    public function addTrainingId($trainingId){
+        $this->trainingModel->setTrainingId($trainingId);
+    }
+
+
     public function build() : TrainingModel {
         $result = $this->trainingModel;
         $this->reset();

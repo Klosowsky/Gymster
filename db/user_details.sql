@@ -19,3 +19,9 @@ alter table user_details
 
 INSERT INTO public.user_details (user_detail_id, country_id, first_name, second_name, email, image) VALUES (3, 1, 'Mateusz', 'klos', 'matklos@email.com', 'image');
 INSERT INTO public.user_details (user_detail_id, country_id, first_name, second_name, email, image) VALUES (4, 1, 'Mateusz', 'klos', 'matklos@email.com', 'image');
+INSERT INTO public.user_details ( country_id, first_name, second_name, email, image) VALUES ( 1, 'Mateuusz', 'kloos', 'matkloos@email.com', 'imaage') RETURNING user_detail_id;
+INSERT INTO public.users (user_id, privilege_id, username, password) VALUES (7, 1, 'teeest_user', 'pass');
+
+
+SELECT nextval(user_details_user_detail_id_seq.);
+SELECT setval('user_details_user_detail_id_seq',5) ;
