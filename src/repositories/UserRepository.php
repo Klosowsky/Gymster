@@ -12,7 +12,9 @@ class UserRepository extends Repository
         if(!$userFromDb){
             return null;
         }
-        $user= new UserModel($userFromDb['login'],$userFromDb['password'],$userFromDb['privilege_id']);
+        $user= new UserModel($userFromDb['login'],$userFromDb['password']);
+        $user->setPriviledge($userFromDb['privilege_id']);
+        $user->setUserId($userFromDb['user_id']);
         return $user;
     }
 

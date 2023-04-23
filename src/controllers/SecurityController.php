@@ -13,14 +13,23 @@ class SecurityController extends AppController
     }
     public function login()
     {
+        session_start();
         //$testUser = new UserModel('test', 'test');
         if(!$this->isPost()){
-            return $this->render('login');
+            if (isset($_COOKIE["userId"]) OR isset($_COOKIE["username"]) OR isset($_COOKIE["privileges"])){
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/trainings");
+            }
+            else{
+                return $this->render('login');
+            }
+
         }
         $login= $_POST['username'];
         $password=$_POST['password'];
 
         $user = $this->userRepository->getUser($login);
+
 
         if(!$user){
             return $this->render('login',['errorLogin'=>'Incorrect login or password!']);
@@ -30,15 +39,25 @@ class SecurityController extends AppController
             return $this->render('login',['errorLogin'=>'Incorrect login or password!']);
         }
 
+
+        setcookie("userId",$user->getUserId(), time() + (70000 * 30));
+        setcookie("username", $login, time() + (70000 * 30));
+        setcookie("privileges",$user->getPriviledge(), time() + (70000 * 30));
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/trainings");
 
     }
 
-    public function register()
-    {
+    public function register(){
         if (!$this->isPost()) {
-            return $this->render('register');
+            if (isset($_COOKIE["userId"]) OR isset($_COOKIE["username"]) OR isset($_COOKIE["privileges"])){
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/trainings");
+            }
+            else {
+                return $this->render('register');
+            }
         }
         $login=$_POST['username'];
         $email = $_POST['email'];
@@ -56,6 +75,21 @@ class SecurityController extends AppController
         $this->userRepository->addUser($user);
 
         return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+    }
+
+
+    public function logout(){
+        session_start();
+        session_destroy();
+        if (isset($_COOKIE["userId"]) OR isset($_COOKIE["username"]) OR isset($_COOKIE["privileges"])){
+            setcookie("userId", '', time() - (3600));
+            setcookie("username", '', time() - (3600));
+            setcookie("privileges", '', time() - (3600));
+        }
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
+
     }
 
 

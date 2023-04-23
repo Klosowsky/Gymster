@@ -9,7 +9,13 @@ class DefaultController extends AppController
 
     public function index()
     {
-        // TODO check sesion etc..
+        if (isset($_COOKIE["userId"]) OR isset($_COOKIE["username"]) OR isset($_COOKIE["privileges"])){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/trainings");
+        }
+        else{
+            return $this->render('login');
+        }
         $this->render('login');
     }
 
@@ -27,6 +33,11 @@ class DefaultController extends AppController
 /*    public function trainingDetails(){
         $this->render('trainingdetails');
     }*/
+
+    public function userPanel(){
+
+        $this->render('userpanel',['user'=>'test']);
+    }
 
     public function addTraining(){
         //$db= new Database();

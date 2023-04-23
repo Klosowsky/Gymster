@@ -7,6 +7,17 @@ class UserModel
     private $password;
     private $priviledge;
     private $email;
+    private $userId;
+
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    public function setUserId($userId): void
+    {
+        $this->userId = $userId;
+    }
 
     public function getEmail()
     {
