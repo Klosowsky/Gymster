@@ -7,6 +7,9 @@ class UserModel
     private $password;
     private $priviledge;
     private $email;
+    private $firstName;
+    private $secName;
+    private $file;
     private $userId;
 
     public function getUserId()
@@ -63,5 +66,36 @@ class UserModel
     {
         $this->password = $password;
     }
+
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName($firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    public function getSecName()
+    {
+        return $this->secName;
+    }
+
+    public function setSecName($secName): void
+    {
+        $this->secName = $secName;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file): void
+    {
+        $this->file = $file;
+    }
+
 
 }

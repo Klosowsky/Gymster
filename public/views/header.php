@@ -34,9 +34,9 @@ toggle between hiding and showing the dropdown content */
             <img class="user-profile-img" src="/public/uploads/Will_Smith.jpg">
         </div>
         <div id="myDropdownMenu" class="dropdown-menu-content">
-            <a href="#">User settings</a>
+            <a href="userpanel">Your profile</a>
             <a href="#">Admin panel</a>
-            <a href="#">Log out</a>
+            <a href="/logout">Log out</a>
         </div>
     </div>
 

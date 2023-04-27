@@ -16,6 +16,7 @@ Routing::post('uploadtraining','TrainingController');
 Routing::get('gettraining','TrainingController');
 Routing::get('trainings','TrainingController');
 Routing::post('trainingdetails','TrainingController');
+Routing::post('setuserdetails','UserDetailsController');
 
 Routing::run($path);
 
