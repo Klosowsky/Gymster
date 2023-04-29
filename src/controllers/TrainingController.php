@@ -45,6 +45,7 @@ class TrainingController extends AppController
 
     public function uploadtraining()
     {
+        session_start();
         $TrainingData=$_POST;
 
         $trainingBuilder= new TrainingBuilder();
@@ -60,7 +61,7 @@ class TrainingController extends AppController
         print("Training desc: ".$TrainingData['trng-desc']."<br>");
         $trainingBuilder->addTrainingTitle($TrainingData['trng-title']);
         $trainingBuilder->addTrainingDescription($TrainingData['trng-desc']);
-        $trainingBuilder->addTrainingUserId(3);   // HARDCODED - holded until sessions will be covered...
+        $trainingBuilder->addTrainingUserId($_COOKIE["userId"]);   // HARDCODED - holded until sessions will be covered...
         for($i=1;$i<=sizeof($TrainingData)-2;$i++){
             print("Training day nr: ".$i."<br>");
             for($j=1;$j<=sizeof($TrainingData[$i]['exercise']);$j++){

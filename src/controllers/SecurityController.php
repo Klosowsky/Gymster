@@ -14,7 +14,6 @@ class SecurityController extends AppController
     public function login()
     {
         session_start();
-        //$testUser = new UserModel('test', 'test');
         if(!$this->isPost()){
             if (isset($_COOKIE["userId"]) OR isset($_COOKIE["username"]) OR isset($_COOKIE["privileges"])){
                 $url = "http://$_SERVER[HTTP_HOST]";
@@ -43,6 +42,7 @@ class SecurityController extends AppController
         setcookie("userId",$user->getUserId(), time() + (70000 * 30));
         setcookie("username", $login, time() + (70000 * 30));
         setcookie("privileges",$user->getPriviledge(), time() + (70000 * 30));
+        setcookie("image",$user->getFile(), time() + (70000 * 30));
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/trainings");
@@ -62,19 +62,32 @@ class SecurityController extends AppController
         $login=$_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $repatPassword = $_POST['repatPassword'];
+        $repeatPassword = $_POST['repeatPassword'];
 
-        if ($password !== $repatPassword) {
+        if(strlen($login)<4||strlen($login)>16){
+            return $this->render('register', ['messages' => ['Please provide proper username']]);
+        }
+
+        if (strpos($email,'@') === false) {
+            return $this->render('register', ['messages' => ['Please provide proper email']]);
+        }
+
+        if (strlen($password) <7||strlen($password)>16 || $password !== $repeatPassword) {
             return $this->render('register', ['messages' => ['Please provide proper password']]);
         }
 
-        //TODO try to use better hash function
+
         $user = new UserModel($login,md5($password));
         $user->setEmail($email);
 
-        $this->userRepository->addUser($user);
+        if($this->userRepository->addUser($user)){
+            return $this->render('login', ['succesRegister' => 'You\'ve been succesfully registrated!']);
+        }
+        else{
+            return $this->render('login',['errorLogin'=>'Error!']);
+        }
 
-        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+
     }
 
 
@@ -86,7 +99,6 @@ class SecurityController extends AppController
             setcookie("username", '', time() - (3600));
             setcookie("privileges", '', time() - (3600));
         }
-
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/login");
 

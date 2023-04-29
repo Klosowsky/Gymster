@@ -42,11 +42,10 @@
             </div>
             <div class="training-photo-position">
                 <div class="training-user-photo">
-                    <img class="user-profile-img" src="../public/uploads/Will_Smith.jpg">
+                    <img class="user-profile-img" src="../public/uploads/<?= $training->getUserPhoto() ?>">
                 </div>
             </div>
-            <div class="training-username"> <p>ExampleUser123</p>
-                <p class="p-exp">Advanced</p>
+            <div class="training-username"> <p><?= $training->getUsername() ?></p>
             </div>
         </div>
     </div>
