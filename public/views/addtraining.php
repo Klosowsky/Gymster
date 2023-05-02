@@ -34,7 +34,7 @@
             $(trainingDayBtnId).before('<div class="add-exercise-details" id="'+newExerciseId+'"> <div class="my-inline-pos"> <select class="select-add-exercise" id="sel-'+newExerciseId+'" name="'+arrName+'[exercise]['+exerciseForDayCounter[trainingDayId]+']" > ' +
                 '<option value="" selected disabled hidden>Choose exercise</option> ' +
                 '<?php  if(isset($exercises)){ foreach($exercises as $exercise) :?><option value="<?= $exercise->getExerciseId();?>"> <?= $exercise->getExerciseName();?> </option> <?php endforeach;}?>'+
-                '</select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="text" name="'+arrName+'[series]['+exerciseForDayCounter[trainingDayId]+']" id="ser-'+newExerciseId+'" placeholder="Series" > </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="text" name="'+arrName+'[reps]['+exerciseForDayCounter[trainingDayId]+']" id="rep-'+newExerciseId+'" placeholder="Reps"> </div> </div>');
+                '</select> <i class="fa-solid fa-trash fa-2xl" id="teeeest" onclick="delete_exercise(this)"></i> </div> <div class="my-inline-pos"> <p>Series:</p> <input type="number" min="1" max="20" name="'+arrName+'[series]['+exerciseForDayCounter[trainingDayId]+']" id="ser-'+newExerciseId+'" placeholder="Series" > </div> <div class="my-inline-pos"> <p>Reps:</p> <input type="number" min="1" max="50" name="'+arrName+'[reps]['+exerciseForDayCounter[trainingDayId]+']" id="rep-'+newExerciseId+'" placeholder="Reps"> </div> </div>');
 
 
         }

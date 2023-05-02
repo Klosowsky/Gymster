@@ -23,7 +23,7 @@ toggle between hiding and showing the dropdown content */
 
 <div class="trainings-header">
     <div class="header-logo">
-        <img class="header-logo-img" src="/public/img/logo.svg">
+        <img class="header-logo-img" src="/public/img/logo.svg" onclick="location.href='/';">
     </div>
 
 <?php

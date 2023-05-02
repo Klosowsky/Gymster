@@ -9,7 +9,39 @@
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>Gymster</title>
 
-    </script>
+
+<!--    <script>
+        const likeButtons = document.querySelectorAll(".fa-thumbs-up");
+        const dislikeButtons = document.querySelectorAll(".fa-minus-square");
+
+
+        function giveLike() {
+
+            const likes = this;
+            const container = likes.parentElement.parentElement.parentElement;
+            const id = container.getAttribute("id");
+            console.log('like '+id);
+            fetch(`/setlike/${id}/`)
+                .then(function () {
+                    likes.innerHTML = parseInt(likes.innerHTML) + 1;
+                })
+        }
+
+        function giveDislike() {
+            const dislikes = this;
+            const container = dislikes.parentElement.parentElement.parentElement;
+            const id = container.getAttribute("id");
+
+            fetch(`/dislike/${id}`)
+                .then(function () {
+                    dislikes.innerHTML = parseInt(dislikes.innerHTML) + 1;
+                })
+        }
+
+        likeButtons.forEach(button => button.addEventListener("click", giveLike));
+        dislikeButtons.forEach(button => button.addEventListener("click", giveDislike));
+    </script>-->
+    <script type="text/javascript" src="/src/js/ratings.js" defer></script>
     <script src="https://kit.fontawesome.com/ab1fdc6776.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -18,26 +50,30 @@
 
 <div class="training-details-container">
     <div class="training-general-info-container">
-        <div class="training-general-info">
-            <div class="training-item-fav" >
-                <i class="fa-regular fa-star fa-2xl"></i>
-                <i class="fa-solid fa-star fa-2xl"></i>
+        <?php
+        if(isset($training)){?>
+        <div class="training-general-info" id="<?=$training->getTrainingId();?>">
+
+            <div class="training-item-usr" >
+                <?php
+                session_start();
+                if ((isset($_COOKIE["privileges"])&&$_COOKIE["privileges"]==='1')||(isset($_COOKIE["userId"])&&$_COOKIE["userId"]===strval($training->getUserId()))){
+                    ?>
+                    <i class="fa-solid fa-trash fa-2xl" onclick="location.href='/deletetraining/<?= $training->getTrainingId()?>';"></i>
+                <?php }?>
             </div>
             <div class="training-item-title">
-                <?php
-                if(isset($training)){?>
                     <?=$training->getTrainingTitle(); ?>
             </div>
             <div class="training-item-descr">
                 <?=$training->getTrainingDescription();?>
             </div>
             <div class="training-item-rate">
-                <div class="likes">
-                    <i class="fa-solid fa-thumbs-up fa-2xl"></i>
-                    <p>1234</p>
+                <div class="likes" onload="getRatings()">
+                    <i class="fa-solid fa-thumbs-up fa-2xl" style="font-weight: 150; letter-spacing: 5px"><?= $training->getLikes()?></i>
                 </div>
                 <div class="dislikes">
-                    <i class="fa-solid fa-thumbs-down fa-2xl"></i> <p>321</p>
+                    <i class="fa-solid fa-thumbs-down fa-2xl " style="font-weight: 150; letter-spacing: 5px"><?= $training->getDislikes()?></i>
                 </div>
             </div>
             <div class="training-photo-position">

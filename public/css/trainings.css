@@ -14,7 +14,7 @@ section.trainings-sec{
     border-bottom: 1px solid gray;
 }
 
-.training-item-fav{
+.training-item-usr{
     display:flex;
     justify-content: center;
     align-items: center;
@@ -505,7 +505,7 @@ textarea.new-training-desc:focus{
     }
 
 
-    .training-item-fav {
+    .training-item-usr {
         display: flex;
         justify-content: center;
         align-items: center;

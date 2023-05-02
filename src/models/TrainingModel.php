@@ -115,7 +115,7 @@ class TrainingModel
 
     public function printTraining()  {
         /*echo "Training: ".implode(" , " ,$this->trainingDays)." \n";*/
-        echo '<pre>'; print_r($this->trainingDays); echo '</pre>';
+        //echo '<pre>'; print_r($this->trainingDays); echo '</pre>';
     }
 
 }

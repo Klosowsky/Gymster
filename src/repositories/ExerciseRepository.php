@@ -16,4 +16,13 @@ class ExerciseRepository extends Repository
         return $exercises;
     }
 
+    public function UploadExercise($exercise) :bool{
+        try{
+            $stmt = $this->database->connect()->prepare('INSERT INTO public.exercises (name) VALUES (?)');
+            $stmt->execute([$exercise->getExerciseName()]);
+            return true;
+        }catch(Exception $exc){
+            return false;
+        }
+    }
 }
