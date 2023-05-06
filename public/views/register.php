@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
-<title>Register page</title>
-    <script type="text/javascript" src="/public/js/register.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="/public/img/logo_icon.svg">
+    <title>Gymster</title>
 
+    <script type="text/javascript" src="/public/js/register.js" defer></script>
 
 </head>
 <body>

@@ -1,4 +1,4 @@
-const search = document.querySelector('input[placeholder="Search training..."]');
+const search = document.querySelector('input[placeholder="Search..."]');
 const trainingContiner = document.querySelector(".trainings-sec");
 
 function getCookie(cookieName) {

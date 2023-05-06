@@ -318,26 +318,14 @@ class TrainingRepository extends Repository
     }
 
     public function getTrainingsByTitle($trainingTitle) : array {
-        $trainingsArray=[];
         try {
             $trainingTitle="%".$trainingTitle."%";
-            $stmt = $this->database->connect()->prepare('SELECT * FROM public.v_trainings WHERE title LIKE(:title)');
+            $stmt = $this->database->connect()->prepare('SELECT * FROM public.v_trainings WHERE title LIKE :title OR LOWER(title) LIKE :title OR UPPER(title) LIKE :title');
             $stmt->bindParam(':title', $trainingTitle, PDO::PARAM_STR);
             $stmt->execute();
             $trainingsFromDb = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $trainingsFromDb;
-            /*$trainingBuilder = new TrainingBuilder();
-            foreach ($trainingsFromDb as $training) {
-                $trainingBuilder->addTrainingUserId($training['user_id']);
-                $trainingBuilder->addTrainingTitle($training['title']);
-                $trainingBuilder->addTrainingDescription($training['description']);
-                $trainingBuilder->addTrainingId($training['training_id']);
-                $trainingBuilder->addLikes($training['likes']);
-                $trainingBuilder->addDislikes($training['dislikes']);
-                $trainingBuilder->addUsername($training['username']);
-                $trainingBuilder->addUserPhoto($training['image']);
-                $trainingsArray[]=$trainingBuilder->build();
-            }*/
+
         }catch(Exception $ex){
             print($ex);
             return [];

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
-<title>Login page</title>
+    <link rel="icon" type="image/x-icon" href="/public/img/logo_icon.svg">
+    <title>Gymster</title>
 
 
 </head>

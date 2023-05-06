@@ -43,9 +43,9 @@ toggle between hiding and showing the dropdown content */
             <img class="user-profile-img" src="/public/uploads/<?= $localImage?>">
         </div>
         <div id="myDropdownMenu" class="dropdown-menu-content">
-            <a href="userpanel">Your profile</a>
+            <a href="/userpanel">Your profile</a>
             <?php if($localPrivilege==1){?>
-            <a href="adminpanel">Admin panel</a>
+            <a href="/adminpanel">Admin panel</a>
             <?php }?>
             <a href="/logout">Log out</a>
         </div>
