@@ -2,7 +2,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
 <title>Register page</title>
-    <script type="text/javascript" src="/src/js/register.js" defer></script>
+    <script type="text/javascript" src="/public/js/register.js" defer></script>
 
 
 </head>

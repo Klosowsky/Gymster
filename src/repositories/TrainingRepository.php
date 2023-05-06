@@ -5,8 +5,8 @@ require_once __DIR__.'/../../src/models/TrainingModel.php';
 require_once __DIR__.'/../../src/models/TrainingDayModel.php';
 require_once __DIR__.'/../../src/models/ExerciseSetModel.php';
 require_once __DIR__.'/../../src/models/ExerciseModel.php';
-require_once __DIR__.'/../../src/builders/TrainingBuilder.php';
-require_once __DIR__.'/../../src/builders/TrainingDayBuilder.php';
+require_once __DIR__ . '/../../src/builders/TrainingBuilder.php';
+require_once __DIR__ . '/../../src/builders/TrainingDayBuilder.php';
 class TrainingRepository extends Repository
 {
 
@@ -171,6 +171,9 @@ class TrainingRepository extends Repository
         $con=$this->database->connect();
         try{
             $con->beginTransaction();
+            $stmt = $con->prepare('DELETE FROM user_ratings WHERE training_id= :training_id');
+            $stmt->bindParam(':training_id', $trainingId, PDO::PARAM_INT);
+            $stmt->execute();
             $stmt = $con->prepare('DELETE FROM training_sessions WHERE training_day_id IN(SELECT training_day_id FROM training_days WHERE training_id= :training_id)');
             $stmt->bindParam(':training_id', $trainingId, PDO::PARAM_INT);
             $stmt->execute();
@@ -180,10 +183,6 @@ class TrainingRepository extends Repository
             $stmt = $con->prepare('DELETE FROM trainings WHERE training_id= :training_id');
             $stmt->bindParam(':training_id', $trainingId, PDO::PARAM_INT);
             $stmt->execute();
-            $stmt = $con->prepare('DELETE FROM user_ratings WHERE training_id= :training_id');
-            $stmt->bindParam(':training_id', $trainingId, PDO::PARAM_INT);
-            $stmt->execute();
-
             $con->commit();
             return true;
         }catch(Exception $exc){

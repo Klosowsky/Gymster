@@ -23,7 +23,7 @@ Routing::post('deletetraining','TrainingController');
 Routing::post('setlike','TrainingController');
 Routing::post('setdislike','TrainingController');
 Routing::post('search','TrainingController');
-Routing::post('getratings','TrainingController');
+Routing::get('getratings','TrainingController');
 
 Routing::run($path);
 
