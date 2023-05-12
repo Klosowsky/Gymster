@@ -72,6 +72,7 @@ class TrainingRepository extends Repository
                 $trainingBuilder->addLikes($training['likes']);
                 $trainingBuilder->addDislikes($training['dislikes']);
                 $trainingBuilder->addUsername($training['username']);
+                $trainingBuilder->addUserPhoto($training['image']);
                 $trainingsArray[]=$trainingBuilder->build();
             }
         }catch(Exception $ex){
@@ -98,6 +99,14 @@ class TrainingRepository extends Repository
             $trainingBuilder->addDislikes($trainingFromDb['dislikes']);
             $tmpTrainingId=$trainingFromDb['training_id'];
             $trainingBuilder->addTrainingId($tmpTrainingId);
+
+            $stmt = $this->database->connect()->prepare('SELECT * FROM public.v_user_data WHERE user_id = :user_id');
+            $stmt->bindParam(':user_id', $trainingFromDb['user_id'], PDO::PARAM_INT);
+            $stmt->execute();
+            $userFromDb=$stmt->fetch(PDO::FETCH_ASSOC);
+            $trainingBuilder->addUsername($userFromDb['username']);
+            $trainingBuilder->addUserPhoto($userFromDb['user_photo']);
+
             $stmt = $this->database->connect()->prepare('SELECT * FROM public.training_days WHERE training_id= :training_id');
             $stmt->bindParam(':training_id', $tmpTrainingId, PDO::PARAM_INT);
             $stmt->execute();

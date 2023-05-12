@@ -20,14 +20,21 @@
                 <input name="username" type="text" placeholder="username">
                 <input name="password" type="password" placeholder="password">
                 <button type="submit">Log in</button>
-                <div class="login-error-message">
+                <div class="error-message">
                 <?php
                     if(isset($messages)){
                         echo $messages['errorLogin'];
                     }
 
                 ?></div>
-                <label for="register">Don't have an account? Register <b><a href="/register">here</a></b></label>
+                <div class="success-message">
+                    <?php
+                    if(isset($messages)){
+                        echo $messages['succesRegister'];
+                    }
+                    ?>
+                </div>
+                <label for="register">Don't have an account? Register <b><a href="/register" class="register-a">here</a></b></label>
             </form>
         </div>
     </div>

@@ -16,22 +16,29 @@
 <?php include 'public/views/header.php';?>
 
 <div class="simple-container">
-    <div class="update-user-details-container">
-        <form action="setuserdetails" class="user-details-form" method="post" ENCTYPE="multipart/form-data">
+    <div class="panel-details-container">
+        <form action="setuserdetails" class="panel-details-form" method="post" ENCTYPE="multipart/form-data">
             <input type="file" name="photo">
             <input name="email" type="text" placeholder="email">
             <input name="first_name" type="text" placeholder="first name">
             <input name="second_name" type="text" placeholder="second name">
             <button type="submit">Update</button>
-
+            <div class="error-message">
+                <?php
+                if(isset($messages)){
+                    echo $messages['error'];
+                }
+                ?>
+            </div>
+            <div class="success-message">
+                <?php
+                if(isset($messages)){
+                    echo $messages['success'];
+                }
+                ?>
+            </div>
         </form>
-        <?php
-        if(isset($messages)){
-            foreach($messages as $message) {
-                echo $message;
-            }
-        }
-        ?>
+
 
 
     </div>

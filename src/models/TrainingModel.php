@@ -7,9 +7,28 @@ class TrainingModel
     private $trainingDescription;
     private $userId;
     private $username;
+    private $userPhoto;
     private $trainingId;
     private $likes;
     private $dislikes;
+
+    /**
+     * @return mixed
+     */
+    public function getUserPhoto()
+    {
+        return $this->userPhoto;
+    }
+
+    /**
+     * @param mixed $userPhoto
+     */
+    public function setUserPhoto($userPhoto): void
+    {
+        $this->userPhoto = $userPhoto;
+    }
+
+
     public function getUsername()
     {
         return $this->username;

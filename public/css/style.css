@@ -38,10 +38,18 @@ body{
     justify-content: center;
     width: 50%;
 }
-.login-error-message{
+.error-message{
     color:red;
     padding-bottom: 1em;
+    align-self: center;
 }
+
+.success-message{
+    color:green;
+    padding-bottom: 1em;
+    align-self: center;
+}
+
 
 .register-container {
     display: flex;
@@ -156,7 +164,7 @@ label{
 
 .user-photo{
     height: 9vh;
-    width: auto;
+    width: 9vh;
 
     border-radius: 50%;
     border: 1px solid gray;
@@ -308,8 +316,7 @@ input.search-training-input:focus{
 }
 
 
-.update-user-details-container{
-    background: burlywood;
+.panel-details-container{
     display: flex;
     align-self: center;
     justify-self: center;
@@ -365,9 +372,8 @@ a {
 
     width: 17vw;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    right:2vw;
-    bottom: -19vh;
+    right:0;
+    top: 7vh;
 }
 
 .dropdown-menu-content a {
@@ -376,6 +382,10 @@ a {
     text-decoration: none;
     display: block;
 
+}
+.register-a{
+    color: inherit;
+    text-decoration: underline;
 }
 
 .dropdown-menu-content a:hover {
@@ -386,7 +396,7 @@ a {
     display:block;
 }
 
-.user-details-form{
+.panel-details-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -394,17 +404,17 @@ a {
 
 }
 
-.user-details-form>input{
+.panel-details-form>input{
     background: #505A63;
     border: 1px solid gray;
     border-radius: 7px;
     color: white;
-    width:30vw;
+    width:20vw;
     padding: 10px;
     margin: 10px;
 }
 
-.user-details-form>select{
+.panel-details-form>select{
     background: #505A63;
     border: 1px solid gray;
     border-radius: 7px;
@@ -413,9 +423,10 @@ a {
     padding: 10px;
     margin: 10px;
 }
-.user-details-form>button{
+.panel-details-form>button{
     align-self: center;
 }
+
 
 @media only screen and (max-device-width: 820px) {
 

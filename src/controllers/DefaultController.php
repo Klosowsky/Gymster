@@ -34,15 +34,16 @@ class DefaultController extends AppController
         $this->render('trainingdetails');
     }*/
 
-    public function userPanel(){
 
-        $this->render('userpanel',['user'=>'test']);
-    }
 
     public function addTraining(){
         //$db= new Database();
         $exercises=["test_ex1","test","3test"];
         $this->render('addtraining', ['exercises'=>$exercises]);
+    }
+
+    public function adminPanel(){
+        $this->render('adminpanel');
     }
 
 }

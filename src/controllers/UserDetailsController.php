@@ -17,31 +17,49 @@ class UserDetailsController extends AppController
         $this->userRepository = new UserRepository();
     }
 
+    public function userPanel(){
+        $this->render('userpanel',['user'=>'test']);
+    }
+
     public function setUserDetails()
     {
+        $isImageUpdated=false;
         if ($this->isPost()) {
             $userDetails = new UserModel("", "");
-            $this->message[]='outside';
-            if (is_uploaded_file($_FILES['photo']['tmp_name']) && $this->validate($_FILES['photo'])) {
-                $this->message[]='inside';
+            if (is_uploaded_file($_FILES['photo']['tmp_name']) ) {
+                if($this->validate($_FILES['photo'])){
                 move_uploaded_file(
                     $_FILES['photo']['tmp_name'],
                     dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['photo']['name']
                 );
-                $userDetails->setFile(dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['photo']['name']);
+                $userDetails->setFile($_FILES['photo']['name']);
+                $isImageUpdated=true;
+                }
+                else{
+                    return $this->render('userpanel', ['error' => 'File error!']);
+                }
 
             }
-            $this->message[]='setted file:'.$userDetails->getFile();
+
+            if ($_POST['email']!=='' && strpos($_POST['email'],'@') === false) {
+                return $this->render('userpanel', ['error' => 'Wrong email!!']);
+            }
+
             $userDetails->setEmail($_POST['email']);
             $userDetails->setFirstName($_POST['first_name']);
             $userDetails->setSecName($_POST['second_name']);
 
-            $this->userRepository->updateUserDetails($userDetails);
+            if(!$this->userRepository->updateUserDetails($userDetails)){
+                return $this->render('userpanel', ['error' => 'Error!']);
+            }
         }
-
-        return $this->render('userpanel', [
-            'messages' => $this->message,
-        ]);
+        if($isImageUpdated){
+            session_start();
+            setcookie("image",$_FILES['photo']['name'], time() + (70000 * 30));
+        }
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/userpanel");
+        return $this->render('userpanel', ['success' => 'User details updated!']);
     }
 
     private function validate(array $file): bool

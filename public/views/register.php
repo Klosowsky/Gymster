@@ -2,6 +2,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
 <title>Register page</title>
+    <script type="text/javascript" src="/src/js/register.js" defer></script>
 
 
 </head>
@@ -16,21 +17,24 @@
             </div>
         </div>
         <div class="register-container">
-            <form method="POST" action="register" class="register">
+            <form name="registerForm" method="POST" action="register" class="register" onsubmit=" return validateFrom()">
                 <input name="username" type="text" placeholder="username">
                 <input name="email" type="text" placeholder="email@email.com">
                 <input name="password" type="password" placeholder="password">
-                <input name="repatPassword" type="password" placeholder="repeat password">
-                <div class="checkbox-inline"><input name="check" type="checkbox"><label for="check" class="check-label">Wyrazam...</label></div>
+                <input name="repeatPassword" type="password" placeholder="repeat password">
                 <button type="submit">Register</button>
+                <div class="error-message">
+                    <?php
+                    if(isset($messages)){
+                        foreach($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
             </form>
-            <?php
-            if(isset($messages)){
-                foreach($messages as $message) {
-                    echo $message;
-                }
-            }
-            ?>
+
+
         </div>
     </div>
 

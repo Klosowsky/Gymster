@@ -41,6 +41,9 @@ class TrainingBuilder
     public function addUsername($username){
         $this->trainingModel->setUsername($username);
     }
+    public function addUserPhoto($userPhoto){
+        $this->trainingModel->setUserPhoto($userPhoto);
+    }
 
 
     public function build() : TrainingModel {
