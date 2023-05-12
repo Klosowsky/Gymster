@@ -29,7 +29,7 @@
 
 
     </script>
-    <script type="text/javascript" src="/src/js/search.js" defer></script>
+    <script type="text/javascript" src="/public/js/search.js" defer></script>
     <script src="https://kit.fontawesome.com/ab1fdc6776.js" crossorigin="anonymous"></script>
 </head>
 <body>

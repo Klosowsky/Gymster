@@ -11,7 +11,7 @@
     </script>
     <script src="https://kit.fontawesome.com/ab1fdc6776.js" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="src/js/jquery.js"></script>
+    <script type="text/javascript" src="public/js/jquery.js"></script>
     <script type="text/javascript">
         var trainingDayCounter=1;
         var exerciseForDayCounter = [];
@@ -82,7 +82,7 @@
             trainingDayCounter++;
             exerciseForDayCounter[trainingDayCounter]=0;
             $('#delete-trng-day-icon').remove();
-            $("#add-tng-day-btn").before('<div class="training-day-box" id="add-day-'+trainingDayCounter+'"> <div class="training-box-day-number"> <i class="fa-solid fa-chevron-up fa-xl" id="collapse-training-day" onclick="collapseTrainingDay(this)"></i> <p>Day '+trainingDayCounter+'</p> <i class="fa-solid fa-trash fa-xl" id="delete-trng-day-icon" style="position: absolute; right: 20px;" onclick="deleteLastTrainingDay()"></i> </div> <div class="training-box-exercise-list" id="trn-day-'+trainingDayCounter+'"> <div id="add-exe-btn-d'+trainingDayCounter+'" class="add-exercise-btn" onclick="add_exercise('+trainingDayCounter+')"><i class="fa-solid fa-plus fa-2xl"></i> <p class="p-add-workout">Add exercise</p> </div> </div> </div>');
+            $("#add-tng-day-btn").before('<div class="training-day-box" id="add-day-'+trainingDayCounter+'"> <div class="training-box-day-number"> <i class="fa-solid fa-chevron-up fa-xl" id="collapse-training-day" onclick="collapseTrainingDay(this)"></i> <p>Day '+trainingDayCounter+'</p> <i class="fa-solid fa-trash fa-xl" id="delete-trng-day-icon" style="position: absolute; right: 20px;" onclick="deleteLastTrainingDay()"></i> </div> <div class="training-box-add-exercise-list" id="trn-day-'+trainingDayCounter+'"> <div id="add-exe-btn-d'+trainingDayCounter+'" class="add-exercise-btn" onclick="add_exercise('+trainingDayCounter+')"><i class="fa-solid fa-plus fa-2xl"></i> <p class="p-add-workout">Add exercise</p> </div> </div> </div>');
         }
 
         function deleteLastTrainingDay() {
@@ -143,6 +143,8 @@
 
     </script>
 
+    <script type="text/javascript" src="/public/js/addtraining.js" defer></script>
+
 </head>
 <body>
 
@@ -150,42 +152,43 @@
 
 <div class="training-details-container">
     <div class="add-training-general-info-container">
-        <div class="add-training-title-box">
+        <div class="add-training-title-box" id="trng-title-box">
             <div class="add-training-title-header">
                 <p>Title</p>
             </div>
             <div class="add-training-title-content">
-                <textarea form="training-form" maxlength="50" class="new-training-title" name="trng-title" placeholder="Your title..."></textarea>
+                <textarea form="training-form" id="trng-title" maxlength="50" class="new-training-title" name="trng-title" placeholder="Your title..."></textarea>
             </div>
         </div>
 
-        <div class="add-training-desc-box">
+        <div class="add-training-desc-box" id="trng-desc-box">
             <div class="add-training-desc-header">
                 <p>Description</p>
             </div>
             <div class="add-training-desc-content">
-                <textarea form="training-form" maxlength="100" class="new-training-desc" name="trng-desc" placeholder="Your description..."></textarea>
+                <textarea form="training-form" id="trng-desc" maxlength="100" class="new-training-desc" name="trng-desc" placeholder="Your description..."></textarea>
             </div>
         </div>
 
         <div class="add-training-buttons-box">
-            <div class="upload-training" onClick="document.forms['training-form'].submit();">
+            <div class="upload-training" onClick="submitTrainingForm();">
                 <i class="fa-sharp fa-solid fa-arrow-up-from-bracket fa-2xl"></i>
                 <p class="p-add-workout">Upload training</p>
             </div>
+            <!--<button type="submit" form="training-form">Submittt!</button>-->
 
 
         </div>
 
     </div>
     <form id="training-form" name="training-form" action="/uploadtraining" method="post" class="add-training-form">
-        <div class="training-add-days-container">
+        <div class="training-add-days-container" id="trng-days-cont">
                 <div class="training-day-box" id="add-day-1">
                     <div class="training-box-day-number">
                         <i class="fa-solid fa-chevron-up fa-xl" id="collapse-training-day" onclick="collapseTrainingDay(this)"></i>
                         <p>Day 1</p>
                     </div>
-                    <div class="training-box-exercise-list" id="trn-day-1">
+                    <div class="training-box-add-exercise-list" id="trn-day-1">
 
                         <!--<div class="add-exercise-details" id="'+newExerciseId+'">
                             <div class="my-inline-pos">

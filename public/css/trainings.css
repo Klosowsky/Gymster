@@ -182,7 +182,7 @@ section.trainings-sec{
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding-left: 35px;
 
 }
 
@@ -249,6 +249,15 @@ section.trainings-sec{
     width: 90vw;
     height: 23%;
     align-self: center;
+}
+
+.training-box-add-exercise-list{
+    height:50vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .add-training-title-box{

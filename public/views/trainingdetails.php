@@ -41,7 +41,7 @@
         likeButtons.forEach(button => button.addEventListener("click", giveLike));
         dislikeButtons.forEach(button => button.addEventListener("click", giveDislike));
     </script>-->
-    <script type="text/javascript" src="/src/js/ratings.js" defer></script>
+    <script type="text/javascript" src="/public/js/ratings.js" defer></script>
     <script src="https://kit.fontawesome.com/ab1fdc6776.js" crossorigin="anonymous"></script>
 </head>
 <body>

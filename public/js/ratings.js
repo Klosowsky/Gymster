@@ -15,14 +15,14 @@ function getCookie(cookieName) {
 function getRatings(){
 
     console.log('get ratings ');
-    const likes= document.querySelector(".fa-thumbs-up");;
+    const likes= document.querySelector(".fa-thumbs-up");
     const container = likes.parentElement.parentElement.parentElement;
     const trainingId = container.getAttribute("id");
     const userId= getCookie('userId');
     console.log('like '+userId);
 
     fetch(`/getratings/${trainingId}/${userId}`, {
-        method: "POST",
+        method: "GET",
     }).then(function (response) {
         return response.json();
     }).then(function (likesData) {
