@@ -17,9 +17,23 @@
 
 <div class="simple-container">
     <div class="panel-details-container">
-        <form method="post" action="/addexercise" class="panel-details-form">
+        <form method="post" action="/uploadexercise" class="panel-details-form">
             <input name="exercise" placeholder="exercise name">
             <button type="submit">Add exercise</button>
+            <div class="error-message">
+                <?php
+                if(isset($messages)){
+                    echo $messages['error'];
+                }
+                ?>
+            </div>
+            <div class="success-message">
+                <?php
+                if(isset($messages)){
+                    echo $messages['success'];
+                }
+                ?>
+            </div>
         </form>
 
     </div>

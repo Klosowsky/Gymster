@@ -24,7 +24,6 @@ function validateFrom(){
         result=false;
     }
 
-
     if((passDOM.value.length>6 && passDOM.value.length<17)&&(String(passDOM.value)===String(repeatPassDOM.value))){
         passDOM.style.borderColor = '#707070';
         repeatPassDOM.style.borderColor = '#707070';
@@ -38,9 +37,5 @@ function validateFrom(){
     if(!result){
         alert("Provide proper values!");
     }
-
-
-    return true;
-
-
+    return result;
 }

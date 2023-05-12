@@ -17,7 +17,13 @@ Routing::get('gettraining','TrainingController');
 Routing::get('trainings','TrainingController');
 Routing::post('trainingdetails','TrainingController');
 Routing::post('setuserdetails','UserDetailsController');
-Routing::get('adminpanel','DefaultController');
+Routing::get('adminpanel','AdminController');
+Routing::post('uploadexercise','AdminController');
+Routing::post('deletetraining','TrainingController');
+Routing::post('setlike','TrainingController');
+Routing::post('setdislike','TrainingController');
+Routing::post('search','TrainingController');
+Routing::post('getratings','TrainingController');
 
 Routing::run($path);
 

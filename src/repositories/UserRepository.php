@@ -35,7 +35,7 @@ class UserRepository extends Repository
             $stmt = $con->prepare('INSERT INTO public.user_details (email) VALUES (?) RETURNING user_detail_id');
             $stmt->execute([$user->getEmail()]);
             $userId = $stmt->fetch(PDO::FETCH_ASSOC)['user_detail_id'];
-            $stmt = $con->prepare('INSERT INTO public.users (user_id, privilege_id, username, password) VALUES (?, 1, ?, ?)');
+            $stmt = $con->prepare('INSERT INTO public.users (user_id, privilege_id, username, password) VALUES (?, 2, ?, ?)');
             $stmt->execute([
                 $userId,
                 $user->getLogin(),

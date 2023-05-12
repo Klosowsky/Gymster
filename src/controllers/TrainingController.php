@@ -11,10 +11,18 @@ require_once 'src/repositories/ExerciseRepository.php';
 class TrainingController extends AppController
 {
 
+    private $trainingRepository;
+    private $exerciseRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->trainingRepository = new TrainingRepository();
+        $this->exerciseRepository = new ExerciseRepository();
+    }
+
     public function getTraining($test){
-        //die("test ".$test);
-        $trainingRepo = new TrainingRepository();
-        $result=$trainingRepo->getTrainings();
+        $result=$this->trainingRepository->getTrainings();
         foreach ($result as $training){
             $training->printTraining();
         }
@@ -22,24 +30,17 @@ class TrainingController extends AppController
     }
 
     public function trainings(){
-        $trainingRepository = new TrainingRepository();
-        $trainings=$trainingRepository->getTrainings();
+        $trainings=$this->trainingRepository->getTrainings();
         $this->render('trainings',['trainings'=>$trainings]);
     }
 
     public function addTraining(){
-        //$db= new Database();
-
-        $exerciseRepository = new ExerciseRepository();
-        $exercises=$exerciseRepository->getExercisesFromDb();
-        //print_r($exercises[0]);
+        $exercises=$this->exerciseRepository->getExercisesFromDb();
         $this->render('addtraining', ['exercises'=>$exercises]);
     }
 
-    public function trainingDetails($param){
-        $trainingRepository = new TrainingRepository();
-        $training=$trainingRepository->getTrainingWithDetails($param);
-        //print_r($training);
+    public function trainingDetails($trainingId){
+        $training=$this->trainingRepository->getTrainingWithDetails($trainingId);
         $this->render('trainingdetails',['training'=>$training]);
     }
 
@@ -54,21 +55,12 @@ class TrainingController extends AppController
         $training = null;
         $trainingDay=null;
 
-        print_r($TrainingData);
-        print("<br>");
-        print("size: ".sizeof($TrainingData)."<br>");
-        print("Training title: ".$TrainingData['trng-title']."<br>");
-        print("Training desc: ".$TrainingData['trng-desc']."<br>");
+
         $trainingBuilder->addTrainingTitle($TrainingData['trng-title']);
         $trainingBuilder->addTrainingDescription($TrainingData['trng-desc']);
-        $trainingBuilder->addTrainingUserId($_COOKIE["userId"]);   // HARDCODED - holded until sessions will be covered...
+        $trainingBuilder->addTrainingUserId($_COOKIE["userId"]);
         for($i=1;$i<=sizeof($TrainingData)-2;$i++){
-            print("Training day nr: ".$i."<br>");
             for($j=1;$j<=sizeof($TrainingData[$i]['exercise']);$j++){
-                print("*Exercise* <br>");
-                print("-- Exercise: ".$TrainingData[$i]['exercise'][$j]."<br>");
-                print("-- Series: ".$TrainingData[$i]['series'][$j]."<br>");
-                print("-- Reps: ".$TrainingData[$i]['reps'][$j]."<br>");
                 $trainingDayBuilder->addExercise(new ExerciseSetModel($TrainingData[$i]['exercise'][$j],$TrainingData[$i]['series'][$j],$TrainingData[$i]['reps'][$j]));
             }
             $trainingDay=$trainingDayBuilder->build();
@@ -78,38 +70,60 @@ class TrainingController extends AppController
         $training = $trainingBuilder->build();
         $training->printTraining();
 
-        print("<br>-------*----------<br>");
 
-        $trainingRepository = new TrainingRepository();
-        $trainingRepository->uploadTrainingToDb($training);
+        $trainingId = $this->trainingRepository->uploadTrainingToDb($training);
 
-
-
-
-        /*foreach ($TrainingData as $trainingDayIndex => $trainingDayData){
-            print("Training title: ".$trainingDayIndex."<br>");
-            print("Training desc: ".$trainingDayIndex."<br>");
-            print("Training day nr: ".$trainingDayIndex."<br>");
-            for($i=1;$i<=sizeof($trainingDayData['exercise']);$i++){
-                print("*Exercise* <br>");
-                print("-- Exercise: ".$trainingDayData['exercise'][$i]."<br>");
-                print("-- Series: ".$trainingDayData['series'][$i]."<br>");
-                print("-- Repse: ".$trainingDayData['reps'][$i]."<br>");
-                $trainingDayBuilder->addExercise(new ExerciseSetModel($trainingDayData['exercise'][$i],$trainingDayData['series'][$i],$trainingDayData['reps'][$i]));
-            }
-            $trainingDay=$trainingDayBuilder->build();
-            $trainingBuilder->addTrainingDay($trainingDay);
+        if($trainingId!==-1){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/trainingdetails/{$trainingId}");
+        }
+        else{
+            return $this->render('addtraining'); // Error handling to add
         }
 
-        $training = $trainingBuilder->build();
-
-        $training->printTraining();*/
-
-        print("<br>-----------------<br>");
+    }
 
 
+    public function deleteTraining($trainingId){
+        if($this->trainingRepository->deleteTraining($trainingId)) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/trainings");
+        }
+    }
 
+    public function setLike($trainingId,$userId){
+        $this->trainingRepository->setLike($trainingId,$userId);
+        $resultArray= ['likes'=>$this->trainingRepository->getLikes($trainingId),'dislikes'=>$this->trainingRepository->getDislikes($trainingId),
+            'isLiked'=>$this->trainingRepository->isLiked($trainingId,$userId),'isDisliked'=>$this->trainingRepository->isDisliked($trainingId,$userId)];
+        echo json_encode($resultArray);
+    }
 
+    public function setDislike($trainingId,$userId){
+        $this->trainingRepository->setDislike($trainingId,$userId);
+        $resultArray= ['likes'=>$this->trainingRepository->getLikes($trainingId),'dislikes'=>$this->trainingRepository->getDislikes($trainingId),
+            'isLiked'=>$this->trainingRepository->isLiked($trainingId,$userId),'isDisliked'=>$this->trainingRepository->isDisliked($trainingId,$userId)];
+
+        echo json_encode($resultArray);
+    }
+
+    public function getRatings($trainingId,$userId){
+        $resultArray= ['isLiked'=>$this->trainingRepository->isLiked($trainingId,$userId),'isDisliked'=>$this->trainingRepository->isDisliked($trainingId,$userId)];
+        echo json_encode($resultArray);
+    }
+
+    public function search()
+    {
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->trainingRepository->getTrainingsByTitle($decoded['search']));
+        }
     }
 
 }

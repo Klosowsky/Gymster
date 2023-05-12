@@ -10,14 +10,14 @@
     <div class="register-base-container">
         <div class="logo-container">
             <div class="logo-icon">
-                <img src="public/img/logo_icon.svg" class="icon">
+                <img src="public/img/logo_icon.svg" onclick="location.href='/';" class="icon">
             </div>
             <div class="logo-text">
-                <img src="public/img/logo.svg">
+                <img src="public/img/logo.svg" onclick="location.href='/';">
             </div>
         </div>
         <div class="register-container">
-            <form name="registerForm" method="POST" action="register" class="register" onsubmit=" return validateFrom()">
+            <form name="registerForm" method="POST" action="register" class="register" onsubmit="return validateFrom()">
                 <input name="username" type="text" placeholder="username">
                 <input name="email" type="text" placeholder="email@email.com">
                 <input name="password" type="password" placeholder="password">
