@@ -32,6 +32,15 @@ class TrainingBuilder
     public function addTrainingId($trainingId){
         $this->trainingModel->setTrainingId($trainingId);
     }
+    public function addLikes($likes){
+        $this->trainingModel->setLikes($likes);
+    }
+    public function addDislikes($dislikes){
+        $this->trainingModel->setDislikes($dislikes);
+    }
+    public function addUsername($username){
+        $this->trainingModel->setUsername($username);
+    }
 
 
     public function build() : TrainingModel {

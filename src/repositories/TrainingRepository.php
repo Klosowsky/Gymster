@@ -60,7 +60,7 @@ class TrainingRepository extends Repository
     public function getTrainings() : array {
         $trainingsArray=[];
         try {
-            $stmt = $this->database->connect()->prepare('SELECT * FROM public.trainings');
+            $stmt = $this->database->connect()->prepare('SELECT * FROM public.v_trainings');
             $stmt->execute();
             $trainingsFromDb = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $trainingBuilder = new TrainingBuilder();
@@ -69,6 +69,9 @@ class TrainingRepository extends Repository
                 $trainingBuilder->addTrainingTitle($training['title']);
                 $trainingBuilder->addTrainingDescription($training['description']);
                 $trainingBuilder->addTrainingId($training['training_id']);
+                $trainingBuilder->addLikes($training['likes']);
+                $trainingBuilder->addDislikes($training['dislikes']);
+                $trainingBuilder->addUsername($training['username']);
                 $trainingsArray[]=$trainingBuilder->build();
             }
         }catch(Exception $ex){
@@ -91,6 +94,8 @@ class TrainingRepository extends Repository
             $trainingBuilder->addTrainingUserId($trainingFromDb['user_id']);
             $trainingBuilder->addTrainingTitle($trainingFromDb['title']);
             $trainingBuilder->addTrainingDescription($trainingFromDb['description']);
+            $trainingBuilder->addLikes($trainingFromDb['likes']);
+            $trainingBuilder->addDislikes($trainingFromDb['dislikes']);
             $tmpTrainingId=$trainingFromDb['training_id'];
             $trainingBuilder->addTrainingId($tmpTrainingId);
             $stmt = $this->database->connect()->prepare('SELECT * FROM public.training_days WHERE training_id= :training_id');

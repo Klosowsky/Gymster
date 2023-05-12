@@ -6,7 +6,40 @@ class TrainingModel
     private $trainingTitle;
     private $trainingDescription;
     private $userId;
+    private $username;
     private $trainingId;
+    private $likes;
+    private $dislikes;
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function setUsername($username): void
+    {
+        $this->username = $username;
+    }
+
+    public function getLikes()
+    {
+        return $this->likes;
+    }
+
+    public function setLikes($likes): void
+    {
+        $this->likes = $likes;
+    }
+
+    public function getDislikes()
+    {
+        return $this->dislikes;
+    }
+
+    public function setDislikes($dislikes): void
+    {
+        $this->dislikes = $dislikes;
+    }
+
 
     public function getTrainingDays(): array
     {

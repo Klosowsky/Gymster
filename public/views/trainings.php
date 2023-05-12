@@ -73,10 +73,11 @@
                 <div class="training-item-rate">
                     <div class="likes">
                         <i class="fa-solid fa-thumbs-up fa-2xl"></i>
-                        <p>1234</p>
+                        <p><?= $training->getLikes()?></p>
                     </div>
                     <div class="dislikes">
-                        <i class="fa-solid fa-thumbs-down fa-2xl"></i> <p>321</p>
+                        <i class="fa-solid fa-thumbs-down fa-2xl"></i>
+                        <p><?= $training->getLikes()?></p>
                     </div>
                 </div>
                 <div class="training-photo-position">
@@ -84,8 +85,7 @@
                         <img class="user-profile-img" src="public/uploads/Will_Smith.jpg">
                     </div>
                 </div>
-                <div class="training-username"> <p>ExampleUser123</p>
-                    <p class="p-exp">Advanced</p>
+                <div class="training-username"> <p><p><?= $training->getUsername()?></p></p>
                 </div>
 
             </div></a>

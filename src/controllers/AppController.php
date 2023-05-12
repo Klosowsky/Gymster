@@ -20,6 +20,12 @@ class AppController
     protected function render(string $view = null, array $messages = [])
     {
         //die($view);
+        session_start();
+
+        if (($view!="login" AND $view!="register") AND !(isset($_COOKIE["userId"]) OR isset($_COOKIE["username"]) OR isset($_COOKIE["privileges"]))){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
         $path = 'public/views/' . $view . '.php';
         $output = 'page not found';
         if (file_exists($path)) {
