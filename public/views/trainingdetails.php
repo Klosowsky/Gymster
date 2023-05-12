@@ -3,46 +3,14 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <link rel="stylesheet" type="text/css" href="/public/css/trainings.css">
-    <style>body {background:lightcyan;}</style>
+    <link rel="icon" type="image/x-icon" href="/public/img/logo_icon.svg">
     <meta charset="UTF-8">
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
     <title>Gymster</title>
 
-
-<!--    <script>
-        const likeButtons = document.querySelectorAll(".fa-thumbs-up");
-        const dislikeButtons = document.querySelectorAll(".fa-minus-square");
-
-
-        function giveLike() {
-
-            const likes = this;
-            const container = likes.parentElement.parentElement.parentElement;
-            const id = container.getAttribute("id");
-            console.log('like '+id);
-            fetch(`/setlike/${id}/`)
-                .then(function () {
-                    likes.innerHTML = parseInt(likes.innerHTML) + 1;
-                })
-        }
-
-        function giveDislike() {
-            const dislikes = this;
-            const container = dislikes.parentElement.parentElement.parentElement;
-            const id = container.getAttribute("id");
-
-            fetch(`/dislike/${id}`)
-                .then(function () {
-                    dislikes.innerHTML = parseInt(dislikes.innerHTML) + 1;
-                })
-        }
-
-        likeButtons.forEach(button => button.addEventListener("click", giveLike));
-        dislikeButtons.forEach(button => button.addEventListener("click", giveDislike));
-    </script>-->
     <script type="text/javascript" src="/public/js/ratings.js" defer></script>
     <script src="https://kit.fontawesome.com/ab1fdc6776.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -70,10 +38,10 @@
             </div>
             <div class="training-item-rate">
                 <div class="likes" onload="getRatings()">
-                    <i class="fa-solid fa-thumbs-up fa-2xl" style="font-weight: 150; letter-spacing: 5px"><?= $training->getLikes()?></i>
+                    <i class="fa-solid fa-thumbs-up fa-xl" style="font-weight: 150; letter-spacing: 5px"><?= $training->getLikes()?></i>
                 </div>
                 <div class="dislikes">
-                    <i class="fa-solid fa-thumbs-down fa-2xl " style="font-weight: 150; letter-spacing: 5px"><?= $training->getDislikes()?></i>
+                    <i class="fa-solid fa-thumbs-down fa-xl" style="font-weight: 150; letter-spacing: 5px"><?= $training->getDislikes()?></i>
                 </div>
             </div>
             <div class="training-photo-position">

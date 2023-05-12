@@ -64,6 +64,10 @@ class SecurityController extends AppController
         $password = $_POST['password'];
         $repeatPassword = $_POST['repeatPassword'];
 
+        if($this->userRepository->getUser($login)!==null){
+            return $this->render('register', ['messages' => ['This username is already used!']]);
+        }
+
         if(strlen($login)<4||strlen($login)>16){
             return $this->render('register', ['messages' => ['Please provide proper username']]);
         }
@@ -77,11 +81,12 @@ class SecurityController extends AppController
         }
 
 
+
         $user = new UserModel($login,md5($password));
         $user->setEmail($email);
 
         if($this->userRepository->addUser($user)){
-            return $this->render('login', ['succesRegister' => 'You\'ve been succesfully registrated!']);
+            return $this->render('login', ['succesRegister' => 'You\'ve been succesfully registered!']);
         }
         else{
             return $this->render('login',['errorLogin'=>'Error!']);

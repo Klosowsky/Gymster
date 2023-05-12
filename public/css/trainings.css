@@ -27,12 +27,14 @@ section.trainings-sec{
     align-items: center;
     font-size:2em;
     font-weight: bold;
+    word-break: break-word;
+
 }
 
 .training-item-descr{
     display:flex;
     align-items: center;
-    overflow-wrap: break-word;
+    word-break: break-word;
     width:36vw;
     font-size:1.3em;
     padding: 5px 5px;
@@ -43,7 +45,8 @@ section.trainings-sec{
     justify-content: center;
     width:5vw;
     flex-direction: column;
-
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .likes{
@@ -66,9 +69,11 @@ section.trainings-sec{
 
 .training-photo-position{
     width:6vw;
-    height: 100%;
+    height: auto;
     display: grid;
     align-items: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 
 .training-user-photo{
@@ -155,12 +160,26 @@ section.trainings-sec{
 
 }
 
+.training-general-info>.training-item-title{
+    display:flex;
+    width:18vw;
+    align-items: center;
+    font-size:1.8em;
+    font-weight: bold;
+    word-break: break-word;
+    overflow-y: scroll;
+    padding-top: 5px;
+
+}
 .training-general-info>.training-item-descr{
-    display: block;
+    display: flex;
+    padding-top: 5px;
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
     overflow-y: scroll;
+    align-items: center;
+    word-break: break-word;
 }
 
 
@@ -508,7 +527,6 @@ textarea.new-training-desc:focus{
         height: auto;
         border-bottom: 1px solid gray;
         flex-wrap: wrap;
-        margin: 1em 0;
         padding-bottom: 2em
 
     }
@@ -519,25 +537,50 @@ textarea.new-training-desc:focus{
         justify-content: center;
         align-items: center;
         margin-top: 0;
-        width: 30%;
+        width: 100%;
+        height: 100px;
         order: 0;
+        padding-top: 15px;
+        padding-bottom: 20px;
     }
 
 
     .training-item-title {
         display: flex;
-        width: 70%;
+        width: 100%;
+        align-items: center;
+        padding-left: 50px;
+        padding-right: 50px;
+        justify-content: center;
+        font-size: 2.1em;
+        font-weight: bold;
+        order: 1;
+        word-break: break-word;
+    }
+
+    .training-general-info>.training-item-title {
+        display: flex;
+        width: 100%;
         align-items: center;
         font-size: 2.1em;
         font-weight: bold;
         order: 1;
+        word-break: break-word;
     }
 
     .training-item-descr {
         display: flex;
         align-items: center;
 
-        overflow-wrap: break-word;
+        width: 100%;
+        font-size: 1.5em;
+        padding: 2em 2em;
+        order: 2;
+    }
+    .training-general-info>.training-item-descr {
+        display: flex;
+        align-items: center;
+
         width: 100%;
         font-size: 1.5em;
         padding: 2em 2em;
@@ -648,6 +691,7 @@ textarea.new-training-desc:focus{
 
     }
 
+
     .training-box-day-number > p {
         font-size: 1.5em;
         margin-block-start: 0.6em;
@@ -665,6 +709,11 @@ textarea.new-training-desc:focus{
         margin-bottom: 70px;
         margin-top: 60px;
         font-size: 3em;
+    }
+
+    .training-box-add-exercise-list{
+        height: auto;
+        overflow-y: unset;
     }
 
     .training-box-exercise > .p-exercise-name {
