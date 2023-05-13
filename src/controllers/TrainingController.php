@@ -60,14 +60,9 @@ class TrainingController extends AppController
         $trainingBuilder->addTrainingDescription($TrainingData['trng-desc']);
         $trainingBuilder->addTrainingUserId($_COOKIE["userId"]);
         $countOfDays=sizeof($TrainingData)-2;
-        //print("general data size: ".$countOfDays);
         for($i=1;$i<=$countOfDays;$i++){
-            //print("general data size: ".$countOfDays);
-            //print($i."\n");
-            //print_r($TrainingData[$i]['exercise']);
             if(is_subclass_of($TrainingData[$i]['exercise'],'Countable') || is_array($TrainingData[$i]['exercise'])){
                 for ($j = 1; $j <= sizeof($TrainingData[$i]['exercise']); $j++) {
-                    //print(" insidefor ");
                     $trainingDayBuilder->addExercise(new ExerciseSetModel($TrainingData[$i]['exercise'][$j], $TrainingData[$i]['series'][$j], $TrainingData[$i]['reps'][$j]));
                 }
             }

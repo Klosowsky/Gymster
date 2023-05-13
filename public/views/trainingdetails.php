@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <link rel="stylesheet" type="text/css" href="/public/css/trainings.css">
-    <link rel="icon" type="image/x-icon" href="/public/img/logo_icon.svg">
+    <link rel="icon" type="image/x-icon" href="/public/img/tab_logo.png">
     <meta charset="UTF-8">
 
     <title>Gymster</title>

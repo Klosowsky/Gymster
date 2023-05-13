@@ -54,8 +54,6 @@ function deleteLastTrainingDay() {
 
     if (trainingDayCounter > 1) {
         var lastTrainingDay = document.getElementById("add-day-" + trainingDayCounter).firstElementChild.innerHTML;
-        /*document.getElementById("add-day-" + trainingDayCounter).firstElementChild.innerHTML = '<p>Day ' + trainingDayCounter + '</p> <i class="fa-solid fa-trash fa-xl" id="delete-trng-day-icon" style="position: absolute; right: 20px;" onclick="deleteLastTrainingDay()"></i>';
-    */
         var lastTrainingDay1 = document.getElementById("add-day-" + trainingDayCounter).firstElementChild;
         var pElem=lastTrainingDay1.querySelector("p");
         console.log(pElem.innerHTML);

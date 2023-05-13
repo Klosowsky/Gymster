@@ -10,7 +10,6 @@ class ExerciseRepository extends Repository
         $stmt->execute();
         $exercisesFromDb = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($exercisesFromDb as $exercise){
-            //print($exercise['id']." - ".$exercise['name']);
             $exercises[]= new ExerciseModel($exercise['exercise_id'],$exercise['name']);
         }
         return $exercises;
