@@ -1,13 +1,10 @@
 <script>
-    /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
     function myFunction() {
         console.log("start");
         document.getElementById("myDropdownMenu").classList.toggle("show-menu");
         console.log("end");
     }
 
-    // Close the dropdown menu if the user clicks outside of it
     window.onclick = function(event) {
         if (!event.target.matches('.header-user-details') && !event.target.matches('.user-username') && !event.target.matches('.user-profile-img')) {
             var dropdowns = document.getElementsByClassName("dropdown-menu-content");

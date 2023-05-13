@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
-    <link rel="icon" type="image/x-icon" href="/public/img/logo_icon.svg">
+    <link rel="icon" type="image/x-icon" href="/public/img/tab_logo.png">
     <title>Gymster</title>
 
     <script type="text/javascript" src="/public/js/register.js" defer></script>

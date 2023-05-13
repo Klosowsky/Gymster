@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/trainings.css">
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/public/img/logo_icon.svg">
+    <link rel="icon" type="image/x-icon" href="/public/img/tab_logo.png">
     <title>Gymster</title>
 
     </script>

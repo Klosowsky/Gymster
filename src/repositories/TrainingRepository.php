@@ -19,7 +19,6 @@ class TrainingRepository extends Repository
             $trainingBuilder = new TrainingBuilder();
             $trainingDayBuilder = new TrainingDayBuilder();
             foreach ($trainingsFromDb as $training){
-                //print($exercise['id']." - ".$exercise['name']);
                 $trainingBuilder->addTrainingUserId($training['user_id']);
                 $trainingBuilder->addTrainingTitle($training['title']);
                 $trainingBuilder->addTrainingDescription($training['description']);
@@ -53,7 +52,6 @@ class TrainingRepository extends Repository
         }catch (Exception $ex){
             print($ex);
         }
-        //print_r($trainingsArray);
         return $trainingsArray;
     }
 
@@ -187,7 +185,6 @@ class TrainingRepository extends Repository
             return true;
         }catch(Exception $exc){
             $con->rollBack();
-            print_r($exc);
             return false;
         }
     }

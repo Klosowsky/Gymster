@@ -12,17 +12,11 @@ class TrainingModel
     private $likes;
     private $dislikes;
 
-    /**
-     * @return mixed
-     */
     public function getUserPhoto()
     {
         return $this->userPhoto;
     }
 
-    /**
-     * @param mixed $userPhoto
-     */
     public function setUserPhoto($userPhoto): void
     {
         $this->userPhoto = $userPhoto;
