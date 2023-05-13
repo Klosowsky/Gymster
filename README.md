@@ -1,5 +1,31 @@
 # Gymster
-Project for WDPAI
+## About
+Gymster is a web application that can be used to share training plan with others.
+
+## Run application
+To run this aplication, you need docker and docker compose. All you have to do is run:
+```
+docker-compose up
+```
+And after that, you can see the application screen under URL: [localhost:8080](https://localhost:8080)
+
+## Database
+Application is using PostgreSQL database. Here you can see the structure of database: [ERD](https://github.com/Klosowsky/Gymster/blob/master/gymster_erd.pdf).<br>
+The dump of database can be found in file: [dump](https://github.com/Klosowsky/Gymster/blob/master/dump.sql).
+
+## Users
+In dump data, I provided two example users:
+| username | password | privilege |
+| ---------| -------- | --------- |
+| admin    | admin    | admin     |
+| user     | user123  | user      |<br>
+
+There are two roles for users, admin and normal user.
+
+## User interface
+I started from creating design of application in Adobe XD. Result can be found here: [design](https://github.com/Klosowsky/Gymster/blob/master/gymster_design.pdf).<br>
+User interface is fully responsive. That means application can be used also on phones.<br>
+During the development process I leave some of ideas, mostly because of small amount of time.
 
 
 
@@ -16,7 +42,8 @@ Project for WDPAI
 ![image](https://github.com/Klosowsky/Gymster/assets/100305489/71e1d97d-0894-43b5-ab7e-a086fdb89756)
 
 
-
+## Authors
+Mateusz Kłos ([Klosowsky](https://github.com/Klosowsky))
 
 
 
